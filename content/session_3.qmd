@@ -1,0 +1,68 @@
+**Session 3: Data Management and Documentation (45 minutes)**
+  
+  **1. Best Practices for Data Collection and Documentation (15 minutes):**
+  - Emphasize the importance of systematic and standardized data collection procedures in ensuring reproducibility.
+- Discuss common challenges in data collection and strategies to address them.
+- Highlight the significance of comprehensive documentation throughout the data collection process.
+- Reference materials:
+  - **Guide:** "Ten Simple Rules for Effective Data Management" by Wilkinson, M. D., et al. [Link](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004525)
+
+**2. Data Cleaning and Preprocessing for Reproducibility (15 minutes):**
+  - Discuss the role of data cleaning and preprocessing in preparing high-quality, reproducible datasets.
+- Provide guidelines for identifying and handling missing data, outliers, and other common issues.
+- Share best practices for documenting data cleaning procedures.
+- Reference materials:
+  - **Book:** "Data Wrangling with R" by Bradley Boehmke. [Link](https://bradleyboehmke.github.io/data_wrangling/)
+
+**3. Metadata and Codebook Creation (15 minutes):**
+  - Introduce the concept of metadata and its importance in providing context for datasets.
+- Discuss the creation of codebooks to document variable definitions, coding schemes, and any transformations applied to the data.
+- Showcase examples of well-documented metadata and codebooks.
+- Reference materials:
+  - **Guide:** "Creating a Codebook" by ICPSR (Inter-university Consortium for Political and Social Research). [Link](https://www.icpsr.umich.edu/web/pages/portal/ICPSR/curation/datamanagement/codebook.html)
+
+**Hands-on Activity 2: Data Cleaning and Documentation (30 minutes):**
+  - Engage participants in a hands-on exercise where they work with a sample dataset to perform data cleaning and create documentation.
+- Encourage participants to share their approaches and discuss challenges faced during the activity.
+- Provide feedback and suggestions for improvement.
+
+**Additional Resources:**
+  - **Article:** "Data Management for Researchers: Organize, Maintain and Share Your Data for Research Success" by Kristin Briney. [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3672722/)
+- **Webinar:** "Effective Data Management for Epidemiologic Studies" by the Society for Epidemiologic Research. [Link](https://www.youtube.com/watch?v=ngB2RBUf0zU)
+
+**Note:** Tailor the content based on the software commonly used by participants for data management and cleaning (e.g., R, Python, Excel). Encourage participants to apply the principles learned in the hands-on activity to their own research projects.
+
+
+**Session 4: Statistical Analysis and Code Reproducibility (45 minutes)**
+  
+  **1. Importance of Transparent Statistical Analysis (15 minutes):**
+  - Discuss the critical role of transparent statistical analysis in reproducibility.
+- Emphasize the need for clear and well-documented statistical methods to facilitate replication and validation of results.
+- Introduce the concept of open statistical practices.
+- Reference materials:
+  - **Paper:** Wasserstein, R. L., & Lazar, N. A. (2016). The ASA's statement on p-values: Context, process, and purpose. The American Statistician, 70(2), 129-133. [Link](https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108)
+
+**2. Using Coding Best Practices for Reproducibility (15 minutes):**
+   - Discuss coding best practices that enhance the reproducibility of statistical analyses (e.g., script organization, commenting, modularization).
+   - Introduce literate programming concepts (e.g., R Markdown, Jupyter Notebooks) to integrate code and documentation.
+   - Share examples of well-documented and reproducible statistical analyses.
+   - Reference materials:
+     - **Guide:** "R Markdown: The Definitive Guide" by Yihui Xie, J. J. Allaire, & Garrett Grolemund. [Link](https://bookdown.org/yihui/rmarkdown/)
+     - **Guide:** "Jupyter Notebook Best Practices" by Quantecon. [Link](https://quantecon.org/jupyter.html)
+
+**3. Avoiding Common Pitfalls in Statistical Analysis (15 minutes):**
+   - Highlight common pitfalls that can compromise the reproducibility of statistical analyses (e.g., overfitting, p-hacking).
+   - Discuss strategies for addressing these pitfalls and promoting robust statistical practices.
+   - Reference materials:
+     - **Paper:** Colquhoun, D. (2014). An investigation of the false discovery rate and the misinterpretation of p-values. Royal Society Open Science, 1(3), 140216. [Link](https://royalsocietypublishing.org/doi/full/10.1098/rsos.140216)
+
+**Hands-on Activity 3: Creating Reproducible Analysis Scripts (30 minutes):**
+   - Engage participants in a hands-on activity where they will work with sample datasets to perform statistical analyses using best coding practices.
+   - Encourage participants to create a reproducible analysis script (e.g., R script, Jupyter Notebook) that includes code, visualizations, and interpretations.
+   - Facilitate discussions on challenges faced during the activity and solutions adopted.
+
+**Additional Resources:**
+   - **Course:** "Reproducible Research and Reports with R Markdown" by Coursera. [Link](https://www.coursera.org/learn/reproducible-research)
+   - **Article:** "Best Practices for Statistical Data Analysis" by Nature Methods. [Link](https://www.nature.com/articles/nmeth.2613)
+
+**Note:** Adapt the session content based on the statistical software commonly used by participants (e.g., R, Python, SAS). Encourage participants to apply the principles learned in the hands-on activity to their own statistical analyses.

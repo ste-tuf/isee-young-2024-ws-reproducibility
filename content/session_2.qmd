@@ -1,0 +1,30 @@
+**Session 1: Understanding Reproducibility (30 minutes)**
+  
+  **1. Defining Reproducibility and its Significance (10 minutes):**
+  - Provide a clear definition of reproducibility in the context of epidemiology research, emphasizing the ability to replicate study results using the same data and methods.
+- Highlight the importance of reproducibility for building trust in scientific findings and facilitating the validation of research outcomes.
+- Reference materials:
+  - **Paper:** Peng, R. D. (2011). Reproducible research in computational science. Science, 334(6060), 1226-1227. [Link](https://science.sciencemag.org/content/334/6060/1226)
+
+**2. Common Challenges in Achieving Reproducibility in Epidemiology (10 minutes):**
+  - Discuss typical challenges and pitfalls in epidemiology research that hinder reproducibility, such as data manipulation errors, lack of transparency, and inadequate documentation.
+- Share examples of well-known cases where reproducibility issues have affected the credibility of research.
+- Reference materials:
+  - **Paper:** Ioannidis, J. P. (2005). Why most published research findings are false. PLoS Medicine, 2(8), e124. [Link](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124)
+
+**3. Real-World Examples and Case Studies (10 minutes):**
+  - Present real-world examples and case studies that illustrate the impact of reproducibility on epidemiological research.
+- Include instances of successful reproducibility and its positive effects on the scientific community.
+- Reference materials:
+  - **Paper:** Nosek, B. A., Alter, G., Banks, G. C., Borsboom, D., Bowman, S. D., Breckler, S. J., ... & Contestabile, M. (2015). Promoting an open research culture. Science, 348(6242), 1422-1425. [Link](https://science.sciencemag.org/content/348/6242/1422)
+
+**Hands-on Activity: Reproducibility Challenge (30 minutes):**
+  - Engage participants in a short activity where they assess the reproducibility of a provided research paper or study.
+- Encourage them to identify potential challenges and propose solutions for improving reproducibility in the selected case.
+- Facilitate group discussions to share insights and findings.
+
+**Additional Resources:**
+  - **Blog Post:** "The Importance of Reproducibility in Epidemiology" by Simply Statistics. [Link](https://simplystatistics.org/2016/02/02/the-importance-of-reproducibility-in-epidemiology/)
+- **Webinar:** "Reproducibility in Epidemiology" by the Center for Open Science. [Link](https://www.youtube.com/watch?v=tvjWe5HBv58)
+
+**Note:** Customize the session content based on the participants' level of familiarity with reproducibility concepts. Encourage active participation and discussions during the hands-on activity to reinforce key principles.
