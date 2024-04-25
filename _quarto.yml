@@ -1,6 +1,6 @@
 project:
   type: website 
-  output-dir: _site
+  output-dir: docs
   
 website: 
   title: "ISEE young 2024 - WS8 - Reproducitiliby"
@@ -38,11 +38,11 @@ website:
           - text: Data
             href: content/pre-ws.qmd#data
       - text: Part 1
-        href: session_1.qmd
+        href: content/session_1.qmd
       - text: Practice 1
-        href: session_2.qmd
+        href: content/session_2.qmd
       - text: Practice 2
-        href: session_3.qmd
+        href: content/session_3.qmd
     right: 
       - icon: github
         # href: https://github.com/
