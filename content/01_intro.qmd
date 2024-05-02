@@ -1,3 +1,17 @@
+
+
+
+- **Introduction (20 minutes):**
+  - Welcome
+  - Importance of reproducibility in epidemiology research
+  - The principles of a reproducible workflow
+      - Creating and organizing a project structure for reproducibility
+      - Avoiding copy pasting with functions
+      - Git basic to keep track your code
+  - Real-world examples and case studies
+  
+  
+  
 **Session 1: Understanding Reproducibility (30 minutes)**
   
   **1. Defining Reproducibility and its Significance (10 minutes):**

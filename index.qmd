@@ -5,211 +5,68 @@ date: 2024-06-05
 ---
 
 This workshop aims to provide young epidemiology researchers knowledge
-and skills needed to increase reproducibility of their research.
+and skills to increase reproducibility of their research.
 
 The first part of the workshop will begin by defining reproducibility
 and its importance in epidemiology, exploring associated challenges and
-opportunities. Focus will be put on practical solutions that young
+opportunities. In the second part of the workshop, focus will be put on practical 
+solutions and their application so that young
 researchers can implement in their analysis and writing.
 
-In the second part of the workshop, participants will learn how to start
-reproducible projects and incorporate best data management and coding
-practices, inspired by data science and open-source worlds. We will
-introduce participants to collaboration tools like Git, Git-Hub, and
-several R packages that improve analysis and code reproducibility,
-including quarto, purrr, targets, gt. The workshop will conclude with
-hands-on exercises, enabling participants to apply this tools by
-themselves. Pre-workshop materials including package installation
-scripts, data sets, R scripts, will be shared and freely accessible on
-Git-Hub.
 
 ![](img/WS8.png)
 
 
+## Goals
+
+- Learn about the need of reproducibility
+
+- Know how to improve the organisation of your (R) projects
+
+- Make your code cleaner, documented and shorter
+
+- Learn how to track changes in your code
+
+
 ## Program
 
-
--   **Introduction (15 minutes):**
-
-    -   Welcome and Icebreaker
-    -   Overview of the importance of reproducibility in epidemiology research
-
--   **Session 1: Understanding Reproducibility (30 minutes)**
-
-    -   Defining reproducibility and its significance in scientific research
-    -   Common challenges in achieving reproducibility in epidemiology
-    -   Real-world examples and case studies
-
--   **Session 2: Building a Reproducible Workflow (45 minutes)**
-
-    -   Introduction to the principles of a reproducible workflow
-    -   Tools and techniques for version control (e.g., Git)
-    -   Creating and organizing a project structure for reproducibility
-
--   **Hands-on Activity 1: Setting up a Reproducible Project (30 minutes)**
-
-    -   Participants will work on a simple project to apply the principles learned in Session 2
-
--   **Break (15 minutes): Networking and Refreshments**
-
--   **Session 3: Data Management and Documentation (45 minutes)**
-
-    -   Best practices for data collection and documentation
-    -   Data cleaning and preprocessing for reproducibility
-    -   Metadata and codebook creation
-
--   **Hands-on Activity 2: Data Cleaning and Documentation (30 minutes)**
-
-    -   Participants will engage in a hands-on activity to apply data management principles
-
--   **Session 4: Statistical Analysis and Code Reproducibility (45 minutes)**
-
-    -   Importance of transparent statistical analysis
-    -   Using coding best practices for reproducibility (e.g., R Markdown, Jupyter Notebooks)
-    -   Avoiding common pitfalls in statistical analysis
-
--   **Hands-on Activity 3: Creating Reproducible Analysis Scripts (30 minutes)**
-
-    -   Participants will work on coding exercises to enhance code reproducibility
-
--   **Closing Remarks and Q&A (30 minutes)**
-
-    -   Summary of key takeaways
-    -   Resources for further learning
-    -   Open floor for questions and discussion
-
-
-
-
-- **Introduction (15 minutes):**
-  - Welcome and Icebreaker
-- Overview of the importance of reproducibility in epidemiology research
-
-- **Session 1: Understanding Reproducibility (30 minutes)**
-  - Defining reproducibility and its significance in scientific research
-- Common challenges in achieving reproducibility in epidemiology
-- Real-world examples and case studies
-
-- **Session 2: Building a Reproducible Workflow (45 minutes)**
-  - Introduction to the principles of a reproducible workflow
-- Tools and techniques for version control (e.g., Git)
-- Creating and organizing a project structure for reproducibility
-
-- **Hands-on Activity 1: Setting up a Reproducible Project (30 minutes)**
-  - Participants will work on a simple project to apply the principles learned in Session 2
-
-- **Break (15 minutes): Networking and Refreshments**
-  
-  - **Session 3: Data Management and Documentation (45 minutes)**
-  - Best practices for data collection and documentation
-- Data cleaning and preprocessing for reproducibility
-- Metadata and codebook creation
-
-- **Hands-on Activity 2: Data Cleaning and Documentation (30 minutes)**
-  - Participants will engage in a hands-on activity to apply data management principles
-
-- **Session 4: Statistical Analysis and Code Reproducibility (45 minutes)**
-  - Importance of transparent statistical analysis
-- Using coding best practices for reproducibility (e.g., R Markdown, Jupyter Notebooks)
-- Avoiding common pitfalls in statistical analysis
-
-- **Hands-on Activity 3: Creating Reproducible Analysis Scripts (30 minutes)**
-  - Participants will work on coding exercises to enhance code reproducibility
-
-- **Closing Remarks and Q&A (30 minutes)**
-  - Summary of key takeaways
-- Resources for further learning
-- Open floor for questions and discussion
-
-**Materials Needed:**
-  - Projector and screen for presentations
-- Whiteboard or flip chart for interactive discussions
-- Individual or shared computers for hands-on activities
-- Internet access for accessing online resources
-- Printed handouts summarizing key points and resources
-
-**Note:**
-  Encourage participants to bring their own laptops for hands-on activities, and provide pre-workshop materials if necessary. Ensure that the workshop content aligns with the skill level and interests of the target audience of young epidemiology researchers
-
-
-**Conference Workshop Template: Enhancing Reproducibility in Epidemiology Research for Young Researchers**
-
-**Title: Unlocking the Power of Reproducibility: A Hands-on Workshop for Young Epidemiology Researchers**
-
-**Objective:**
-The workshop aims to equip young epidemiology researchers with the essential skills and knowledge to enhance the reproducibility of their research. Participants will gain practical insights, tools, and resources to foster transparent and robust scientific practices in epidemiology.
-
-**Duration:**
-- **Introduction (15 minutes):**
-  - Welcome and Icebreaker
-  - Overview of the importance of reproducibility in epidemiology research
-  
-- **Session 1: Understanding Reproducibility (30 minutes)**
-  - Defining reproducibility and its significance in scientific research
-  - Common challenges in achieving reproducibility in epidemiology
+- **Introduction (20 minutes):**
+  - Welcome
+  - Importance of reproducibility in epidemiology research
+  - The principles of a reproducible workflow
+      - Creating and organizing a project structure for reproducibility
+      - Avoiding copy pasting with functions
+      - Git basic to keep track your code
   - Real-world examples and case studies
-  
-- **Session 2: Building a Reproducible Workflow (45 minutes)**
-  - Introduction to the principles of a reproducible workflow
-  - Tools and techniques for version control (e.g., Git)
-  - Creating and organizing a project structure for reproducibility
-  
-- **Hands-on Activity 1: Setting up a Reproducible Project (30 minutes)**
-  - Participants will work on a simple project to apply the principles learned in Session 2
-  
-- **Break (15 minutes): Networking and Refreshments**
 
-- **Session 3: Data Management and Documentation (45 minutes)**
-  - Best practices for data collection and documentation
-  - Data cleaning and preprocessing for reproducibility
-  - Metadata and codebook creation
-  
-- **Hands-on Activity 2: Data Cleaning and Documentation (30 minutes)**
-  - Participants will engage in a hands-on activity to apply data management principles
-  
-- **Session 4: Statistical Analysis and Code Reproducibility (45 minutes)**
-  - Importance of transparent statistical analysis
-  - Using coding best practices for reproducibility (e.g., R Markdown, Jupyter Notebooks)
-  - Avoiding common pitfalls in statistical analysis
-  
-- **Hands-on Activity 3: Creating Reproducible Analysis Scripts (30 minutes)**
-  - Participants will work on coding exercises to enhance code reproducibility
-  
-- **Closing Remarks and Q&A (30 minutes)**
+- **Hands-on Activity 1: a simple reproducible project (40 minutes)**
+  - Start up a reproducible project 
+  - Organize all the files
+  - Optimize the analysis with functions
+  - Add comments and style the scripts 
+
+- **Optional break (15 minutes): Networking and Refreshments**
+
+- **Hands-on Activity 2: Data Management and Documentation (40 minutes)**
+  - Create a report of your result
+  - Make nice table using GT
+  - Introduction to git to save your code
+
+- **Closing Remarks and Q&A (15 minutes)**
   - Summary of key takeaways
   - Resources for further learning
   - Open floor for questions and discussion
-
-**Materials Needed:**
-- Projector and screen for presentations
-- Whiteboard or flip chart for interactive discussions
-- Individual or shared computers for hands-on activities
-- Internet access for accessing online resources
-- Printed handouts summarizing key points and resources
-
-**Note:**
-Encourage participants to bring their own laptops for hands-on activities, and provide pre-workshop materials if necessary. Ensure that the workshop content aligns with the skill level and interests of the target audience of young epidemiology researchers.
-
-
-Title: Elevate your research with reproducibility science practices: a R workshop for young researcher in epidemiology
-
-This workshop aims to give young epidemiology researchers the knowledge and skills needed to enhance the reproducibility of their research. The first part of the workshop will begin by defining reproducibility and its importance in epidemiology, exploring associated challenges and opportunities. Besides study design and research good practices, focus will be put on practical solutions that young researchers can implement in their analysis and writing. In the second part of the workshop, participants will learn how to start reproducible projects and incorporate best data management and coding practices, inspired by data science and open-source worlds. We will introduce participants to collaboration tools like Git, Git-Hub, and several R packages that improve analysis and code reproducibility, including `quarto`, `purrr`, `targets`, `gt`. The workshop will conclude with hands-on exercises, enabling participants to apply these learnings by themselves. Pre-workshop materials including package installation scripts, data sets, R scripts, will be shared and freely accessible on Git-Hub.
-
-**Materials Needed:** - Projector and screen for presentations - Whiteboard or flip chart for interactive discussions - Individual or shared computers for hands-on activities - Internet access for accessing online resources - Printed handouts summarizing key points and resources
-
-**Note:** Encourage participants to bring their own laptops for hands-on activities, and provide pre-workshop materials if necessary. Ensure that the workshop content aligns with the skill level and interests of the target audience of young epidemiology researchers
 
 # Requirements
 
 Computer with the following software installed:
 
-- R (version R 4.3.0 or later), 
-- R-studio, version 2023.03 or later (other IDE like Visual code can also be used, but the),
+- R (version R 4.3.0 or later)
+- R-studio, version 2023.03 or later (other IDE like Visual code can also be used)
 - quarto (version 1.3 or later)
 - git and git-gui (version \>= 2.40.0)
 
-Pre workshop instructions can be found here : [Pre-workshop instructions](content/pre-ws.qmd)
+All the pre-workshop instructions can be found here: [Pre-workshop](content/00_pre-ws.qmd).
 
-It is promising that some leaders in epidemiology (22, 23, 77) and journals are encouraging open science. Early-career epidemiologists could also play a key role. Indeed, in the social sciences, early-career researchers have led numerous replication studies and founded research networks to facilitate their conduct (2, 78), founded journals that incentivize open-science practices (79), developed software to identify incorrect statistical reporting in papers (80), and founded a multinational network of journal clubs covering open-science practices (ReproducibilitiTea, https://reproducibilitea.org/)
 
 
