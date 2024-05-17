@@ -40,8 +40,7 @@ researchers can implement in their analysis and writing.
   - Real-world examples and case studies
 
 - **Hands-on Activity 1: a simple reproducible project (40 minutes)**
-  - Start up a reproducible project 
-  - Organize all the files
+  - How to organize project's files
   - Optimize the analysis with functions
   - Add comments and style the scripts 
 

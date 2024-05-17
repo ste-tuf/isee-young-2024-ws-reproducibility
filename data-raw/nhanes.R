@@ -26,8 +26,8 @@ nhanes_search(variables, "", data_file_name == "MCQ_E")
 # Files for the workshop
 # DEMO
 # MCQ
-# AQQ 
-# UHM 
+# AQQ
+# UHM
 # Cycles: "2009-2010", "2007-2008"
 
 # https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DEMO_E.htm
@@ -46,73 +46,84 @@ nh2009 <- dplyr::inner_join(data[[4]], data[[2]], by = c("SEQN", "cycle")) |>
   dplyr::inner_join(data[[8]], by = c("SEQN", "cycle"))
 
 nh2007 <- nh2007 |>
-  dplyr::filter(!is.na(URXUCR)) |> 
   dplyr::mutate(
-    id = SEQN, 
-    gender = RIAGENDR, 
-    age_screening = RIDAGEYR, #80 == >= 80, 
-    education = DMDEDUC2, 
+    id = SEQN,
+    gender = RIAGENDR,
+    age_screening = RIDAGEYR, # 80 == >= 80,
+    education = DMDEDUC2,
     education_child = DMDEDUC3,
     marital_status = DMDMARTL,
     creatinine = URXUCR,
     lead = URXUPB,
     barium = URXUBA,
     cadmium = URXUCD,
-    asthma = MCQ010 ,
+    asthma = MCQ010,
     heart_failure = MCQ160B,
     coronary_heart_disease = MCQ160C,
     heart_attack = MCQ160E,
     stroke = MCQ160F,
     chronic_bronchitis = MCQ160K,
-    cancer = MCQ220 ,
+    cancer = MCQ220,
     .keep = "none"
-  ) |> 
+  ) |>
   dplyr::mutate(
     gender = factor(gender),
     education = factor(education),
     dplyr::across(heart_failure:cancer, \(x) x == 1)
+  ) |>
+  dplyr::filter(
+    !is.na(creatinine),
+    !is.na(lead),
+    !is.na(barium),
+    !is.na(cadmium)
   )
 
+
 nh2009 <- nh2009 |>
-  dplyr::filter(!is.na(URXUCR)) |> 
   dplyr::mutate(
-    id = SEQN, 
-    gender = RIAGENDR, 
-    age_screening = RIDAGEYR, #80 == >= 80, 
-    education = DMDEDUC2, 
+    id = SEQN,
+    gender = RIAGENDR,
+    age_screening = RIDAGEYR, # 80 == >= 80,
+    education = DMDEDUC2,
     education_child = DMDEDUC3,
     marital_status = DMDMARTL,
     creatinine = URXUCR,
     lead = URXUPB,
     barium = URXUBA,
     cadmium = URXUCD,
-    asthma = MCQ010 ,
+    asthma = MCQ010,
     heart_failure = MCQ160B,
     coronary_heart_disease = MCQ160C,
     heart_attack = MCQ160E,
     stroke = MCQ160F,
     chronic_bronchitis = MCQ160K,
-    cancer = MCQ220 ,
+    cancer = MCQ220,
     .keep = "none"
-  ) |> 
+  ) |>
   dplyr::mutate(
     gender = factor(gender),
     education = factor(education),
     dplyr::across(heart_failure:cancer, \(x) x == 1)
+  ) |>
+  dplyr::filter(
+    !is.na(creatinine),
+    !is.na(lead),
+    !is.na(barium),
+    !is.na(cadmium)
   )
 
 save(nh2007, file = here("data/nh2007.RData"))
 save(nh2009, file = here("data/nh2009.RData"))
 
 ## Codebook details from NHANES
-# Gender 
+# Gender
 # tibble::tribble(
 #   ~Code.or.Value, ~Value.Description, ~Count, ~Cumulative, ~Skip.to.Item,
 #              "1",             "Male",  5096L,       5096L,            NA,
 #              "2",           "Female",  5053L,      10149L,            NA,
 #              ".",          "Missing",     0L,      10149L,            NA
 #   )
-# 
+#
 # RIDRETH1 - Race/Ethnicity
 # Race/Ethnicity
 # tibble::tribble(
@@ -138,9 +149,9 @@ save(nh2009, file = here("data/nh2009.RData"))
 #     ".",                                            "Missing"
 #   )
 
-# 
+#
 # DMDMARTL - Marital Status
-# 
+#
 # tibble::tribble(
 #   ~Code.or.Value,    ~Value.Description, ~Count, ~Cumulative, ~Skip.to.Item,
 #              "1",             "Married",  3116L,       3116L,            NA,
@@ -153,15 +164,15 @@ save(nh2009, file = here("data/nh2009.RData"))
 #             "99",          "Don't know",     0L,       5935L,            NA,
 #              ".",             "Missing",  4214L,      10149L,            NA
 #   )
-# 
-# 
+#
+#
 # DMDEDUC3 - Education Level - Children/Youth 6-19
 # URXUCR - Creatinine, urine (mg/dL)
 # URXUPB = "Lead, urine (ug/L)",
 # URXUBA - Barium, urine (ug/L)
 # URXUCD - Cadmium, urine (ug/L),
 # PAQ685 - Bad air quality change activities
-# 
+#
 # tibble::tribble(
 #   ~Value,                              ~Value.Description, ~Count, ~Cumulative, ~Skip.to.Item,
 #      "1",                                           "Yes",   777L,        777L,            NA,
@@ -171,8 +182,8 @@ save(nh2009, file = here("data/nh2009.RData"))
 #      "9",                                    "Don't know",     1L,       6546L,            NA,
 #      ".",                                       "Missing",     0L,       6546L,            NA
 #   )
-# 
-# 
+#
+#
 # MCQ010 - Ever been told you have asthma
 # MCQ160B - Ever told had congestive heart failure
 # MCQ160C - Ever told you had coronary heart disease
