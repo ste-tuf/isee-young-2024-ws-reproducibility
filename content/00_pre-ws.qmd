@@ -68,7 +68,7 @@ according to your preferences.
     console:
 
     ``` R
-    install.packages("quarto", "tidyverse", "gt", "targets")
+    install.packages("quarto", "tidyverse", "styler", "gt", "targets")
     ```
 
 -   For Linux, some packages might required additional compilation
@@ -82,17 +82,12 @@ requirements for better experience during the workshop.
 
 # Data
 
-Data used in the cohort is from NHANES study. You can either download it here: 
+Data used in the workshop is a sample of the NHANES study in particular 2007 and 2009 waves, including demographic, medical and various exposure variables. Two dataset need to be donwloaded: 
 
-or run the following lines in R: 
+- [`nh2007.Rdata`](../data/nh2007.Rdata) 
+- [`nh2009.Rdata`](../data/nh2009.Rdata)
 
-``` R
-install.packages("NHANES")
-
-
-```
-
-
+<!-- If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R`. -->
 
 # Getting scripts
 
