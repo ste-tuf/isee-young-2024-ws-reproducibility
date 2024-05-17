@@ -1,3 +1,21 @@
+
+```{r}
+gt::gt(tibble::tribble(
+  ~Code,                                   ~Value.Description,
+             "1",                                "Less Than 9th Grade",
+             "2", "9-11th Grade (Includes 12th grade with no diploma)",
+             "3",                 "High School Grad/GED or Equivalent",
+             "4",                          "Some College or AA degree",
+             "5",                          "College Graduate or above",
+             "7",                                            "Refused",
+             "9",                                         "Don't Know",
+             ".",                                            "Missing"
+  )
+) |> 
+  gt::tab_header("Codebook for Education Level - Adults 20+")
+
+```
+
 **Session 3: Data Management and Documentation (45 minutes)**
   
   **1. Best Practices for Data Collection and Documentation (15 minutes):**

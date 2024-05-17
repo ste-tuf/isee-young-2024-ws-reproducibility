@@ -91,12 +91,4 @@ Data used in the workshop is a sample of the NHANES study in particular 2007 and
 
 # Getting scripts
 
-You can get the workshop scripts and documents by cloning the GitHub
-repo:
-
-``` bash
-git clone https://github.com/ste-tuf/isee-young-ws-reproducibility.git
-```
-
-
-
+Please download the initail script of the workshop: [`starting_script.R`](../R/starting_script.R)

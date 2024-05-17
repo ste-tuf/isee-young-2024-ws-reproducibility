@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rstudio-conf-2022.github.io/ggplot2-graphic-design/content/00_pre-ws.html</loc>
-    <lastmod>2024-05-02T12:22:37.420Z</lastmod>
+    <lastmod>2024-05-17T14:28:05.549Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-conf-2022.github.io/ggplot2-graphic-design/content/01_intro.html</loc>
-    <lastmod>2024-05-02T12:22:38.003Z</lastmod>
+    <lastmod>2024-05-17T14:04:31.270Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-conf-2022.github.io/ggplot2-graphic-design/content/02_exercise_1.html</loc>
-    <lastmod>2024-05-02T12:22:38.548Z</lastmod>
+    <lastmod>2024-05-17T14:27:53.568Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-conf-2022.github.io/ggplot2-graphic-design/content/03_exercise_2.html</loc>
-    <lastmod>2024-05-02T12:22:39.225Z</lastmod>
+    <lastmod>2024-05-17T14:27:59.494Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-conf-2022.github.io/ggplot2-graphic-design/content/slides-1.html</loc>
@@ -22,6 +22,10 @@
   </url>
   <url>
     <loc>https://rstudio-conf-2022.github.io/ggplot2-graphic-design/index.html</loc>
-    <lastmod>2024-05-02T12:22:40.385Z</lastmod>
+    <lastmod>2024-05-17T09:31:30.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rstudio-conf-2022.github.io/ggplot2-graphic-design/content/slides_1.html</loc>
+    <lastmod>2024-05-17T14:13:42.274Z</lastmod>
   </url>
 </urlset>

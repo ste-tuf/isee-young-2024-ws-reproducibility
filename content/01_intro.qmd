@@ -1,3 +1,25 @@
+---
+title: "Introduction"
+author: "Stephane Tuffier"
+date: 2024-06-05
+---
+
+- **Introduction (20 minutes):**
+  - Welcome
+  - Importance of reproducibility in epidemiology research
+  - The principles of a reproducible workflow
+      - Creating and organizing a project structure for reproducibility
+      - Avoiding copy pasting with functions
+      - Git basic to keep track your code
+  - Real-world examples and case studies
+  - Real-world examples
+
+```{=html}
+<iframe class="slide-deck" src="slides_1.html"></iframe>
+```
+  
+  
+  
 
 
 

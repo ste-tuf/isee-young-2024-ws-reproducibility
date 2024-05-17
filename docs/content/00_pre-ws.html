@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>R packages</h1>
 <ul>
 <li><p><strong>Windows, Mac, Linux:</strong> All the packages can be installed with R package manager. Open RStudio and run the following command in the console:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>, <span class="st">"tidyverse"</span>, <span class="st">"gt"</span>, <span class="st">"targets"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>, <span class="st">"tidyverse"</span>, <span class="st">"styler"</span>, <span class="st">"gt"</span>, <span class="st">"targets"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>For Linux, some packages might required additional compilation steps, please refer to your distribution documentation.</p></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -251,15 +251,16 @@ Tip
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<p>Data used in the cohort is from NHANES study. You can either download it here:</p>
-<p>or run the following lines in R:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"NHANES"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Data used in the workshop is a sample of the NHANES study in particular 2007 and 2009 waves, including demographic, medical and various exposure variables. Two dataset need to be donwloaded:</p>
+<ul>
+<li><a href="../data/nh2007.Rdata"><code>nh2007.Rdata</code></a></li>
+<li><a href="../data/nh2009.Rdata"><code>nh2009.Rdata</code></a></li>
+</ul>
+<!-- If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R`. -->
 </section>
 <section id="getting-scripts" class="level1">
 <h1>Getting scripts</h1>
-<p>You can get the workshop scripts and documents by cloning the GitHub repo:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/ste-tuf/isee-young-ws-reproducibility.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Please download the initail script of the workshop: <a href="../R/starting_script.R"><code>starting_script.R</code></a></p>
 
 
 </section>
@@ -505,7 +506,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">© CC BY-NC, Stéphane Tuffier</div>
+    <div class="nav-footer-right">© CC BY-NC, Stephane Tuffier</div>
   </div>
 </footer>
 
