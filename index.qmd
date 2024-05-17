@@ -45,12 +45,12 @@ researchers can implement in their analysis and writing.
   - Optimize the analysis with functions
   - Add comments and style the scripts 
 
-- **Optional break (15 minutes): Networking and Refreshments**
+- **Break (30 minutes)**
 
-- **Hands-on Activity 2: Data Management and Documentation (40 minutes)**
-  - Create a report of your result
-  - Make nice table using GT
-  - Introduction to git to save your code
+- **Hands-on Activity 2: Reporting and Git (50 minutes)**
+  - Create a nice report for your results
+  - Make nice tables using `gt`
+  - Use to git to save your progress
 
 - **Closing Remarks and Q&A (15 minutes)**
   - Summary of key takeaways

@@ -1,5 +1,7 @@
 # Create NHANES dataset for the workshop
 library(RNHANES)
+library(here)
+library(tidyverse)
 
 
 # Search air pollution and health data
@@ -99,8 +101,8 @@ nh2009 <- nh2009 |>
     dplyr::across(heart_failure:cancer, \(x) x == 1)
   )
 
-save(nh2007, file = "data/nh2007.RData")
-save(nh2009, file = "data/nh2009.RData")
+save(nh2007, file = here("data/nh2007.RData"))
+save(nh2009, file = here("data/nh2009.RData"))
 
 ## Codebook details from NHANES
 # Gender 
