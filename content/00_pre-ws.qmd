@@ -68,7 +68,7 @@ according to your preferences.
     console:
 
     ``` R
-    install.packages("quarto", "tidyverse", "styler", "gt", "targets")
+    install.packages("quarto", "tidyverse", "styler", "gt", "here")
     ```
 
 -   For Linux, some packages might required additional compilation

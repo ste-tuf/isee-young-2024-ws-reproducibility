@@ -19,13 +19,13 @@ researchers can implement in their analysis and writing.
 
 ## Goals
 
-- Learn about the need of reproducibility
+- Explain what is a reproducibile analysis workflow
 
-- Know how to improve the organisation of your (R) projects
+- Show how to improve the organisation of your R projects
 
-- Make your code cleaner, documented and shorter
+- Show and apply simple tools to make your analysis code cleaner, shorter, documented and more reproducible
 
-- Learn how to track changes in your code
+- Introduce to Git to track changes in your code
 
 
 ## Program
@@ -37,19 +37,20 @@ researchers can implement in their analysis and writing.
       - Creating and organizing a project structure for reproducibility
       - Avoiding copy pasting with functions
       - Git basic to keep track your code
-  - Real-world examples and case studies
 
 - **Hands-on Activity 1: a simple reproducible project (40 minutes)**
   - How to organize project's files
-  - Optimize the analysis with functions
-  - Add comments and style the scripts 
-
+  - Style R scripts 
+  - First Git commit
+  - Introduction to creating your own functions
+  
 - **Break (30 minutes)**
 
-- **Hands-on Activity 2: Reporting and Git (50 minutes)**
-  - Create a nice report for your results
+- **Hands-on Activity 2: create a nice report (50 minutes)**
+  - Functional programming wiht `purrr`
+  - Create a nice report with quarto
   - Make nice tables using `gt`
-  - Use to git to save your progress
+  - Bonus: Git branch and remote repo
 
 - **Closing Remarks and Q&A (15 minutes)**
   - Summary of key takeaways
@@ -66,6 +67,5 @@ Computer with the following software installed:
 - git and git-gui (version \>= 2.40.0)
 
 All the pre-workshop instructions can be found here: [Pre-workshop](content/00_pre-ws.qmd).
-
 
 

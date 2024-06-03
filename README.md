@@ -8,6 +8,3 @@ Workshop website is accessible at https://ste-tuf.github.io/isee-young-ws-reprod
 
 ![](WS8.png)
 
-## Licence
-
-CC BY-NC

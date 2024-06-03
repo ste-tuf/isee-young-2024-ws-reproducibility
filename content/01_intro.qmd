@@ -2,66 +2,34 @@
 title: "Introduction"
 author: "Stephane Tuffier"
 date: 2024-06-05
+slide-format: revealjs
 ---
 
-- **Introduction (20 minutes):**
-  - Welcome
-  - Importance of reproducibility in epidemiology research
-  - The principles of a reproducible workflow
-      - Creating and organizing a project structure for reproducibility
-      - Avoiding copy pasting with functions
-      - Git basic to keep track your code
-  - Real-world examples and case studies
-  - Real-world examples
+
+# Slides
+
+<div>
 
 ```{=html}
-<iframe class="slide-deck" src="slides_1.html"></iframe>
+<iframe class="slide-deck" src="01_slides_intro.html" width="100%" height="500px"></iframe>
 ```
-  
-  
-  
 
+</div>
 
+# General context 
 
-- **Introduction (20 minutes):**
-  - Welcome
-  - Importance of reproducibility in epidemiology research
-  - The principles of a reproducible workflow
-      - Creating and organizing a project structure for reproducibility
-      - Avoiding copy pasting with functions
-      - Git basic to keep track your code
-  - Real-world examples and case studies
-  
-  
-  
-**Session 1: Understanding Reproducibility (30 minutes)**
-  
-  **1. Defining Reproducibility and its Significance (10 minutes):**
-  - Provide a clear definition of reproducibility in the context of epidemiology research, emphasizing the ability to replicate study results using the same data and methods.
-- Highlight the importance of reproducibility for building trust in scientific findings and facilitating the validation of research outcomes.
-- Reference materials:
-  - **Paper:** Peng, R. D. (2011). Reproducible research in computational science. Science, 334(6060), 1226-1227. [Link](https://science.sciencemag.org/content/334/6060/1226)
+The ultimate aim of this workshop is to  make you able to start creating data analysis projects that are: 
 
-**2. Common Challenges in Achieving Reproducibility in Epidemiology (10 minutes):**
-  - Discuss typical challenges and pitfalls in epidemiology research that hinder reproducibility, such as data manipulation errors, lack of transparency, and inadequate documentation.
-- Share examples of well-known cases where reproducibility issues have affected the credibility of research.
-- Reference materials:
-  - **Paper:** Ioannidis, J. P. (2005). Why most published research findings are false. PLoS Medicine, 2(8), e124. [Link](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124)
+- self-contained (within a single folder)
+- have a record of changes made to the files
+- make it easier for others to collaborate
+- make it simpler to connect the project with a scientific output like a paper
+- to structure analyses to be more reproducible (or at least more easily inspectable).
 
-**3. Real-World Examples and Case Studies (10 minutes):**
-  - Present real-world examples and case studies that illustrate the impact of reproducibility on epidemiological research.
-- Include instances of successful reproducibility and its positive effects on the scientific community.
-- Reference materials:
-  - **Paper:** Nosek, B. A., Alter, G., Banks, G. C., Borsboom, D., Bowman, S. D., Breckler, S. J., ... & Contestabile, M. (2015). Promoting an open research culture. Science, 348(6242), 1422-1425. [Link](https://science.sciencemag.org/content/348/6242/1422)
+This is will: 
 
-**Hands-on Activity: Reproducibility Challenge (30 minutes):**
-  - Engage participants in a short activity where they assess the reproducibility of a provided research paper or study.
-- Encourage them to identify potential challenges and propose solutions for improving reproducibility in the selected case.
-- Facilitate group discussions to share insights and findings.
+- improve transparency of your reseach project
+- make it easier to share both with your research team but also public, funding agency and other researcher
+- facilitate the assessment of the quality of your work including peer review.
 
-**Additional Resources:**
-  - **Blog Post:** "The Importance of Reproducibility in Epidemiology" by Simply Statistics. [Link](https://simplystatistics.org/2016/02/02/the-importance-of-reproducibility-in-epidemiology/)
-- **Webinar:** "Reproducibility in Epidemiology" by the Center for Open Science. [Link](https://www.youtube.com/watch?v=tvjWe5HBv58)
-
-**Note:** Customize the session content based on the participants' level of familiarity with reproducibility concepts. Encourage active participation and discussions during the hands-on activity to reinforce key principles.
-
+Reproducible research is not just about R but more about research practices. We will do many non R things in this workshop.
