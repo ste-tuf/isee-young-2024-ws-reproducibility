@@ -1,48 +1,471 @@
 ---
-title: "Introduction"
+title: "Hands-on Activity 1"
 author: "Stephane Tuffier"
 date: 2024-06-05
+slide-format: revealjs
+execute:
+  eval: false
 ---
 
-# Goals
+Creating a  simple reproducible project 
 
-  - Start up a reproducible project 
-  - Organize all the files
-  - Optimize the analysis with functions
-  - Add comments and style the scripts 
+# Introduction
+
+<div>
+
+```{=html}
+<iframe class="slide-deck" src="02_slides_theory_1.html" width="100%" height="500px"></iframe>
+```
+
+</div>
+
+# Goal
+
+At the end of this exercice you should have a project folder for the
+NHANES analysis, which contains a git repository and with a script in
+the `script/` folder and some functions in the `R/` folder.
 
 # Tasks
 
-# Script
+-   Setup a reproducible project for the analysis of NHANES
+-   Use `styler` to improve the script
+-   Make your first git commit
+-   Create some simple functions
 
+# Starting the project
 
-**Session 1: Understanding Reproducibility (30 minutes)**
+You shoule have downloaded the dataset and the script for this workshop
+if you followed the preworkshop instruction. If you didn't please go
+check them and make sure that you already have git installed:
+
+-   [`nh2007.Rdata`](../data/nh2007.Rdata)
+-   [`nh2009.Rdata`](../data/nh2009.Rdata)
+-   [`starting_script.R`](../R/starting_script.R)
+
+::: cal:out-info
+If you wish to recreate the data by yourself, please have a look at the
+script in `data-raw/nhanes.R` in the workshop's GitHub repository
+:::
+
+The first step is to create a folder to gather all the files that we
+will create for the analysis, you can call `NHANES/` , `isee-young-ws8/`
+or `workshop` it does not matter.
+
+Next we should intialize wihtin this project `git`
+
+## Initialize git repository
+
+Navigate to the nwely created folder, it should be all empty. You can
+right click in the folder and click on `Git GUI here`.
+
+![](/img/git_init_win.png)
+
+This will open a small widow where we can create a new git repository.
+The name of the workshop folder should already be there but you can add
+it manually if needed. You can also launch Git GUI directly from Windows
+start menu.
+
+::: {layout-ncol=2}
+
+![](/img/git_gui_create.png)
+
+![](/img/git_gui_create_2.png)
+:::
+
+Once the repository created you should see the main Git GUI interface:
+
+![](/img/git_gui_empty_text.png){fig-align="center"}
+
+The interface is divided in several parts:
+
+1.  show the files in your working folder
+2.  will display modification to file that can be staged
+3.  show the file and lines in the stage are of the git repository
+4.  is where you can create a comit message before commiting the staged
+    files
+
+Please note the Rescan button which will help actualise the state of the
+working folder.
+
+We can keep this windows open and we will return to it as we advance.
+
+Before adding things to git we need to configure you credentials. Click
+on `Edit > Options` to open the following window:
+
+![](/img/git_gui_edit_option.png){fig-align="center"}
+
+Here you can setup your User Name and Email both for the curent proejct
+or for all git projects
+
+::: callout-info
+This step can also be done using by typing the following command in the
+git command line namely Git Bash.
+
+``` bash
+
+# GIT bash
+git config --global user.name "First Last"
+git config --global user.email "first.last@example.com
+```
+:::
+
+::: callout-tip
+You can also initialize git repository when creating a R Studio project.
+:::
+
+## Create a Rstudio project
+
+Now let's open RStudio to also initiate a Rproject. Click on "New
+project" in the project menu on the top right corner. Then select
+"Project in existing directory" and indicate the path of the workshop
+folder. The project should open itself.
+
+Each Rstudio project can be configured. You can either click on the
+`.Rproj` file within RStudio or click on Project option in the tools
+menu.
+
+It's usally to turn off the saving of the workspace to .Rdata as this
+avoid issue with old data from previous days to be loaded automatically
+each time you open the project which can cause a lot of issues. It's
+always better to rerun the scripts form scratch.
+
+## Adding folder and files
+
+Now that we have setup both git and RStudio, let's add the minimun set
+of folders and files.
+
+-   Folders:
+    -   `data/`: the two datasets nh2007 and nh2009 can be put here
+    -   `R/`: keep the folder empty for now
+    -   `scripts/`: copy starting_script.R here
+-   Files:
+    -   `README`: at the root ot the project folder. You can open it in
+        R Studio and add a very short description of the project.
+        -   `scripts/README.md`, optional to add some information on the
+            script we can find in this folder
+    -   `.gitignore`: at the root of the project folder. It can contain
+        a list of files that git should ignore. You can open it in
+        RStudio and add the following lines:
+
+```         
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.RDataTmp
+
+# User-specific files
+.Ruserdata
+
+# RStudio files
+.Rproj.user/
+
+# R Environment Variables
+.Renviron
+```
+
+This will prevent git from following the modification of these files
+that are only temporary and not related to the analysis.
+
+The folder should look like that: 
+
+## Files added by git
+
+``` text
+Project
+├── .git/ <-- Git repository stored here (eg data about changes)
+├── R/
+├── data/
+|   ├──  nh2007.Rdata
+|   └──   nh2009.Rdata
+scripts/
+|   ├──starting_script.R
+|   └──  README.md
+├── .gitignore 
+├── Project.Rproj
+└── README.md
+```
+
+# You first commit
+
+It's time to save in Git the initial state of the project. Switch to the
+Git GUI windows.
+
+Unfortunately nothing is showing up. It's because git need to actuliase
+the list of files in the folder. To do so clik on the Rescan button.
+
+Now all the files and folders should appears. Click on them to show the
+changes and state of each files. We can then to the staged area byt
+clickin on "Stage to commit" in the "Commit" menu (Ctr+T, is very
+usefull). Put all the files and folder in the stagede area.
+
+Prepare the commit by adding a commit message like: "Initial commit" or
+"Create project". Then click on the commit button.
+
+Congratulation the work done is saved 🥳
+
+If you don't remenber what you did you can open the repository history
+by clicking on "View all branch history" in the "Repository" menu.
+
+![](/img/meme_commit.jpg){fig-align="center"}
+
+# Improve the script
+
+## Loading the data
+
+It's time to look at the analysis script. You can try to make it run as
+it is.
+
+But in the first 3 lines:
+
+```{r}
+library(tidyverse)
+
+setwd("C:/folder/isee-analysis/")
+nh2007 <- load("C:/folder/isee-analysis/nh2007.Rdata")
+```
+
+Exercice: Can you spot the issue there? How can we improve the loading
+of the data within the project directory?
+
+::: {.callout-tip title="Solution" collapse="true"}
+Since we have setup RStudio and we are working within a project, the
+working directory is the project folder. Therefore we can just specify
+the path to follow within the folder (e.g. a relative path):
+
+```{r}
+nh2007 <- load("data/nh2007.Rdata")
+```
+
+This will work on any computer with the same project folder. Relative
+paths can also be used when sourcing R scripts.
+:::
+
+## Script style
+
+Question: What can you notice regarding the coding style used in the
+script?
+
+-   Is it consistent?
+-   Does it match the tidyverse style guidelines?
+
+```{r}
+# ...
+nh2007$id<-factor(nh2007$id)
+nh2007$gender<-factor(nh2007$gender)
+# ...
+nh2007$asthma<- nh2007$asthma%in%1
+nh2007$cancer<-nh2007$cancer%in%1
+nh2007$cancer <- nh2007$cancer %in% 1
+# ....
+model.1a <- glm(asthma ~ barium + age_screening + gender,data=nh2007)
+model.1.b <- glm(heart_failure ~ barium +age_screening+gender, data = nh2007)
+model.1.c<-glm(coronary_heart_disease ~barium + age_screening + gender,data=nh2007)
+lead2a <- glm(asthma~lead + age_screening + gender, data = nh2007)
+```
+
+::: {.callout-tip title="Solution" collapse="true"}
+We can notice:
+
+-   Inconsistent spacing in the formulas
+-   Variations in the names of the models
+-   General lack of comments
+-   A lot of copy pasting to repeat the same action for differents
+    variables
+:::
+
+We can use `styler` to reformat the whole code:
+
+![](/img/rstudio-styler.png){fig-align="center"}
+
+The code will look much better:
+
+```{r}
+# ...
+nh2007$id <- factor(nh2007$id)
+nh2007$gender <- factor(nh2007$gender)
+# ...
+nh2007$asthma <- nh2007$asthma %in% 1
+nh2007$heart_failure <- nh2007$heart_failure %in% 1
+nh2007$coronary_heart_disease <- nh2007$coronary_heart_disease %in% 1
+nh2007$heart_attack <- nh2007$heart_attack %in% 1
+nh2007$stroke <- nh2007$stroke %in% 1
+nh2007$chronic_bronchitis <- nh2007$chronic_bronchitis %in% 1
+nh2007$cancer <- nh2007$cancer %in% 1
+# ....
+model.1a <- glm(asthma ~ barium + age_screening + gender, data = nh2007)
+model.1.b <- glm(heart_failure ~ barium + age_screening + gender, data = nh2007)
+model.1.c <- glm(coronary_heart_disease ~ barium + age_screening + gender, data = nh2007)
+lead2a <- glm(asthma ~ lead + age_screening + gender, data = nh2007)
+```
+
+We can further change the models names to make them more consitent and
+informative:
+
+```{r}
+model_barium_asthma <- glm(asthma ~ barium + age_screening + gender, data = nh2007)
+model_barium_hf <- glm(heart_failure ~ barium + age_screening + gender, data = nh2007)
+model_barium_chd <- glm(coronary_heart_disease ~ barium + age_screening + gender, data = nh2007)
+model_lead_asthma <- glm(asthma ~ lead + age_screening + gender, data = nh2007)
+```
+
+This will be very convenient when we will make function to extract
+models using their names.
+
+Now the script should work and is a little bit cleaner. Instead of
+saving the script as a new file we can save our modification in git:
+let's do a second comit!
+
+![](/img/meme_commit.jpg){fig-align="center"}
+
+first save the script, then switch to Git Gui, click on rescan (or F5),
+and now `starting_script.r` should appear in the unstaged file, and you
+can see the modification you just made to the file on the right side. If
+you like the modifications, you can add the modified script to the
+staged area (see \# You first commit), add a commit message like "Apply
+tidyverse style guide" and commit. In the history you will see that you
+second commit has been added on top of the first one.
+
+Notice that if you right click on the first commit you have many option
+including to navigate your history and change the copy of the files you
+are working on.
+
+# Create some function
+
+Let's move on the final step of this exercice. As we notice, many steps
+in this script are repetitives. This is probably fine for this small
+script, but not so much when you will have 1 000+ lines to modify.
+
+Form lines 41 to 76, the script is doing some simple summary statistics,
+let's create functions to simplify theses lines.
+
+Question: Look at the provided R code. What patterns or repetitive tasks
+do you notice?
+
+::: {.callout-tip title="Solution" collapse="true"}
+-   Frequency tables and bar plots for factors and logical
+-   Means, standard deviations, quantiles, and histograms for numerical.
+:::
+
+Exercise: Write a simple function to compute a frequency table with NA
+values included.
+
+To find the steps that you need to put in the body of the function, you
+can first try to do a frequency table on one variable of the dataset.
+When it's working, copy paste the steps in the function's body and
+replace the variable names wiht `variable`. Before testing the function,
+you need to run the lines with the function definition to load the
+function in R memory.
+
+```{r}
+compute_table <- function(variable) {
+  # Steps to do on variable
+}
+```
+
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+compute_table <- function(variable) {
+  # Return frequency table as a dataframe
+  table(variable, useNA = "always")
+}
+
+# Change the function to directly convert the results to a dataframe 
+function(variable) {
+  as.data.frame(table(variable, useNA = "always"))
+}
+
+compute_table(nh2007$gender)
+```
+:::
+
+Exercise: Create a similar function for numeric variables with the mean,
+standard deviation, and quantiles
+
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+compute_numeric <- function(variable) {
+  mean_value <- mean(variable, na.rm = TRUE)
+  sd_value <- sd(variable, na.rm = TRUE)
+  quantiles <- quantile(variable, na.rm = TRUE)
   
-  **1. Defining Reproducibility and its Significance (10 minutes):**
-  - Provide a clear definition of reproducibility in the context of epidemiology research, emphasizing the ability to replicate study results using the same data and methods.
-- Highlight the importance of reproducibility for building trust in scientific findings and facilitating the validation of research outcomes.
-- Reference materials:
-  - **Paper:** Peng, R. D. (2011). Reproducible research in computational science. Science, 334(6060), 1226-1227. [Link](https://science.sciencemag.org/content/334/6060/1226)
+  # Return statistics
+  list(
+    "mean" = mean_value,
+    "sd" = sd_value,
+    "quantiles" = quantiles
+  )
+}
+```
+:::
 
-**2. Common Challenges in Achieving Reproducibility in Epidemiology (10 minutes):**
-  - Discuss typical challenges and pitfalls in epidemiology research that hinder reproducibility, such as data manipulation errors, lack of transparency, and inadequate documentation.
-- Share examples of well-known cases where reproducibility issues have affected the credibility of research.
-- Reference materials:
-  - **Paper:** Ioannidis, J. P. (2005). Why most published research findings are false. PLoS Medicine, 2(8), e124. [Link](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124)
+Exercise: Join together the two functions in one function that can
+handle both categorical and numerical variables.
 
-**3. Real-World Examples and Case Studies (10 minutes):**
-  - Present real-world examples and case studies that illustrate the impact of reproducibility on epidemiological research.
-- Include instances of successful reproducibility and its positive effects on the scientific community.
-- Reference materials:
-  - **Paper:** Nosek, B. A., Alter, G., Banks, G. C., Borsboom, D., Bowman, S. D., Breckler, S. J., ... & Contestabile, M. (2015). Promoting an open research culture. Science, 348(6242), 1422-1425. [Link](https://science.sciencemag.org/content/348/6242/1422)
+To test variable type you can use the following code:
 
-**Hands-on Activity: Reproducibility Challenge (30 minutes):**
-  - Engage participants in a short activity where they assess the reproducibility of a provided research paper or study.
-- Encourage them to identify potential challenges and propose solutions for improving reproducibility in the selected case.
-- Facilitate group discussions to share insights and findings.
+```{r}
+is.numeric(variable)
+is.factor(variable)
+```
 
-**Additional Resources:**
-  - **Blog Post:** "The Importance of Reproducibility in Epidemiology" by Simply Statistics. [Link](https://simplystatistics.org/2016/02/02/the-importance-of-reproducibility-in-epidemiology/)
-- **Webinar:** "Reproducibility in Epidemiology" by the Center for Open Science. [Link](https://www.youtube.com/watch?v=tvjWe5HBv58)
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+compute_descriptive_stats <- function(variable) {
+  if (is.numeric(variable)) {
+    statistics <- compute_numeric(variable)
+  }
 
-**Note:** Customize the session content based on the participants' level of familiarity with reproducibility concepts. Encourage active participation and discussions during the hands-on activity to reinforce key principles.
+  if (is.factor(variable)) {
+    statistics <- compute_table(variable)
+  }
+
+  statistics
+}
+
+compute_descriptive_stats(nh2007$age_screening)
+compute_descriptive_stats(nh2007$gender)
+```
+:::
+
+Now we can rewrite the previous lines like that:
+
+```{r}
+compute_descriptive_stats(nh2007$gender)
+compute_descriptive_stats(nh2007$education)
+compute_descriptive_stats(nh2007$education_child)
+compute_descriptive_stats(nh2007$asthma)
+compute_descriptive_stats(nh2007$heart_failure)
+compute_descriptive_stats(nh2007$coronary_heart_disease)
+compute_descriptive_stats(nh2007$creatinine)
+compute_descriptive_stats(nh2007$lead)
+compute_descriptive_stats(nh2007$barium)
+compute_descriptive_stats(nh2007$cadmium)
+```
+
+## Extensions of the functions
+
+Discuss which possible extensions and modifications are possible:
+
+-   create plots for each type of variable using ggplot2
+-   adding other statistical measures
+
+Exercise: create a new descriptive statistics function that includes at
+least one additional feature not covered previously.
+
+# Before break
+
+Move all the new functions to a file in the R folder
+"descriptive_stats.R".
+
+Add a line to source "descriptive_stats.R" in "starting_script.R":
+
+```{r}
+source("R/descriptive_stats.R")
+```
+
+Save the change in git and commit the newly created functions.
+
+![](/img/meme_break.jpg){fig-align="center"}

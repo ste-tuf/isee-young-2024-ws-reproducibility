@@ -31,6 +31,10 @@ website:
             href: content/00_pre-ws.qmd#installation
           - text: Data
             href: content/00_pre-ws.qmd#data
+      - text: Introduction
+        href: content/01_intro.qmd
+      - text: Hands-on Activity 1
+        href: content/02_exercise_1.qmd
       # - text: Introduction
       #   href: content/01_intro.qmd
       # - text: Activity 1
