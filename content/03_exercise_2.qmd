@@ -1,86 +1,542 @@
+---
+title: "Hands-on Activity 2"
+author: "Stephane Tuffier"
+date: 2024-06-05
+slide-format: revealjs
+---
 
-```{r}
-gt::gt(tibble::tribble(
-  ~Code,                                   ~Value.Description,
-             "1",                                "Less Than 9th Grade",
-             "2", "9-11th Grade (Includes 12th grade with no diploma)",
-             "3",                 "High School Grad/GED or Equivalent",
-             "4",                          "Some College or AA degree",
-             "5",                          "College Graduate or above",
-             "7",                                            "Refused",
-             "9",                                         "Don't Know",
-             ".",                                            "Missing"
+```{r setup}
+#| eval: true
+#| echo: false
+#| warning: false
+#| error: false
+
+library(tidyverse)
+library(here)
+load(here("data/nh2007.RData"))
+load(here("data/nh2009.RData"))
+
+compute_descriptive_stats <- function(variable) {
+  statistics <- NA
+
+  # Steps for
+  if (is.numeric(variable)) {
+    statistics <- compute_numeric(variable)
+  }
+
+  if (is.factor(variable) || is.logical(variable)) {
+    statistics <- compute_table(variable)
+  }
+
+  statistics
+}
+
+compute_table <- function(variable) {
+  # Return frequency table as a dataframe
+  table(variable, useNA = "always")
+}
+
+compute_numeric <- function(variable) {
+  mean_value <- mean(variable, na.rm = TRUE)
+  sd_value <- sd(variable, na.rm = TRUE)
+  quantiles <- quantile(variable, na.rm = TRUE)
+
+  # Return statistics
+  list(
+    "mean" = mean_value,
+    "sd" = sd_value,
+    "quantiles" = quantiles
   )
-) |> 
-  gt::tab_header("Codebook for Education Level - Adults 20+")
+}
 
+
+compute_descriptive_graph <- function(variable) {
+  # Steps for
+  if (is.numeric(variable)) {
+    p <- ggplot2::ggplot(mapping = aes(x = variable)) +
+      ggplot2::geom_histogram()
+  }
+
+  if (is.factor(variable) || is.logical(variable)) {
+    p <- ggplot2::ggplot(mapping = aes(x = variable)) +
+      ggplot2::geom_bar()
+  }
+
+  p
+}
 ```
 
-**Session 3: Data Management and Documentation (45 minutes)**
+# Introduction
+
+<div>
+
+```{=html}
+<iframe class="slide-deck" src="03_slides_theory_2.html" width="100%" height="500px"></iframe>
+```
+
+</div>
+
+# Goal
+
+At the end of this exercice you should be able to produce a html documents containing at least one table to summarise models results using `gt` and `quarto` with the `nh2007` dataset. If we have enougth time we will be able to quickly reproduce the analysis with the `nh2009` dataset. 
+
+# Tasks
+
+- Improve and simplify the code using functionnal programming
+- Create a qmd document to genereate a report using quarto
+- Make a table using `gt` to summarise model results
+- Continue to use git to save your progress
+
+# Fonctionnal programing
+
+## Descriptive statistics
+
+Let's look at the script that we finish before the break. We created some functions that we now use for all the descriptive statistics. However we stil had to copy paste the call many times.
+
+```{r}
+#| eval: false
+# Numbers
+compute_descriptive_stats(nh2007$gender)
+compute_descriptive_stats(nh2007$education)
+compute_descriptive_stats(nh2007$education_child)
+compute_descriptive_stats(nh2007$asthma)
+compute_descriptive_stats(nh2007$heart_failure)
+compute_descriptive_stats(nh2007$coronary_heart_disease)
+compute_descriptive_stats(nh2007$creatinine)
+compute_descriptive_stats(nh2007$lead)
+compute_descriptive_stats(nh2007$barium)
+compute_descriptive_stats(nh2007$cadmium)
+
+
+# Graph
+compute_descriptive_graph(nh2007$creatinine)
+compute_descriptive_graph(nh2007$lead)
+compute_descriptive_graph(nh2007$barium)
+compute_descriptive_graph(nh2007$cadmium)
+```
+
+**Exercice:** Can you figure out how to use `map` to avoid copy pasting the call 
+
+::: {.callout-tip title="Solution" collapse="true"}
+
+`map` can take a dataframe as first argument and will apply the function to each column of the data frame:
+
+```{r}
+#| eval: false
+purrr::map(.x = nh2007, .f = compute_descriptive_stats)
+```
+
+For the descriptive graphs we can first use `dplyr::select()` to select the four columns of interest:
+
+```{r}
+#| eval: false
+n2007 |>
+  dplyr::select(creatinine, lead, barium, cadmium) |>
+  purrr::map(, .f = compute_descriptive_graph)
+```
+
+:::
+
+`map` return a list by default: 
+
+```{r}
+#| eval: true
+#| echo: true
+#| include: true
+purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
+  head(3)
+```
   
-  **1. Best Practices for Data Collection and Documentation (15 minutes):**
-  - Emphasize the importance of systematic and standardized data collection procedures in ensuring reproducibility.
-- Discuss common challenges in data collection and strategies to address them.
-- Highlight the significance of comprehensive documentation throughout the data collection process.
-- Reference materials:
-  - **Guide:** "Ten Simple Rules for Effective Data Management" by Wilkinson, M. D., et al. [Link](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004525)
+List are not so easy to work with because functions are mainly build to use a dataframe. 
+However it's very easy to modify `compute_table` and `compute_numeric` to return statistics in a different format. 
 
-**2. Data Cleaning and Preprocessing for Reproducibility (15 minutes):**
-  - Discuss the role of data cleaning and preprocessing in preparing high-quality, reproducible datasets.
-- Provide guidelines for identifying and handling missing data, outliers, and other common issues.
-- Share best practices for documenting data cleaning procedures.
-- Reference materials:
-  - **Book:** "Data Wrangling with R" by Bradley Boehmke. [Link](https://bradleyboehmke.github.io/data_wrangling/)
+When the two functions return a dataframe, it's then possible to use `dplyr::bind_rows()` to bind all the elements of the list from `map` in a single dataframe.
 
-**3. Metadata and Codebook Creation (15 minutes):**
-  - Introduce the concept of metadata and its importance in providing context for datasets.
-- Discuss the creation of codebooks to document variable definitions, coding schemes, and any transformations applied to the data.
-- Showcase examples of well-documented metadata and codebooks.
-- Reference materials:
-  - **Guide:** "Creating a Codebook" by ICPSR (Inter-university Consortium for Political and Social Research). [Link](https://www.icpsr.umich.edu/web/pages/portal/ICPSR/curation/datamanagement/codebook.html)
+Let's first change the two compute functions and load them in our environment:
 
-**Hands-on Activity 2: Data Cleaning and Documentation (30 minutes):**
-  - Engage participants in a hands-on exercise where they work with a sample dataset to perform data cleaning and create documentation.
-- Encourage participants to share their approaches and discuss challenges faced during the activity.
-- Provide feedback and suggestions for improvement.
+```{r}
+compute_table <- function(variable) {
+  # Return frequency table as a dataframe
+  table(variable, useNA = "always", dnn = "level") |>
+    as.data.frame()
+}
 
-**Additional Resources:**
-  - **Article:** "Data Management for Researchers: Organize, Maintain and Share Your Data for Research Success" by Kristin Briney. [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3672722/)
-- **Webinar:** "Effective Data Management for Epidemiologic Studies" by the Society for Epidemiologic Research. [Link](https://www.youtube.com/watch?v=ngB2RBUf0zU)
+compute_numeric <- function(variable) {
+  mean_value <- mean(variable, na.rm = TRUE)
+  sd_value <- sd(variable, na.rm = TRUE)
+  quantiles <- quantile(variable, na.rm = TRUE)
 
-**Note:** Tailor the content based on the software commonly used by participants for data management and cleaning (e.g., R, Python, Excel). Encourage participants to apply the principles learned in the hands-on activity to their own research projects.
+  # Return statistics as a dataframe
+  cbind(
+    data.frame(
+      "mean" = mean_value,
+      "sd" = sd_value
+    ),
+    t(quantiles)
+  )
+}
+```
+
+Then we can run again the lines with map:
+
+```{r}
+purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
+  dplyr::bind_rows(.id = "column") |>
+  head(5)
+```
+
+The result is already much better and easier, notice that we didn't had to change the `compute_descriptive_stats()` function but only the computation functions. 
+This is because there is no calculation happening in `compute_descriptive_stats()`: it's only calling the compute functions for each type of variable.
+
+::: callout-tip
+When modifying functions, it's a good idea to commit the new changes to be able to revert any bad changes.
+
+Jump in Git-gui and commit the new changes to the functions. Repeat
+:::
+
+## Models
+
+We can also use functionnal programming to simplify the creation of the models.
+For the 4 outcomes and the 4 exposures the models are always the same:
+
+```{r}
+#| eval: false
+
+# Creatinine
+model.1a <- glm(asthma ~ barium + age_screening + gender, data = nh2007)
+model.1.b <- glm(heart_failure ~ barium + age_screening + gender, data = nh2007)
+model.1.c <- glm(coronary_heart_disease ~ barium + age_screening + gender, data = nh2007)
+model.1.d <- glm(heart_attack ~ barium + age_screening + gender, data = nh2007)
+model.1.e <- glm(asthma ~ barium + age_screening + gender, data = nh2007) # Notice that this model is identical to 1a, but it's hard to notice
+```
 
 
-**Session 4: Statistical Analysis and Code Reproducibility (45 minutes)**
+The custom function to create need to have at least 2 arugments: one argument for the outcome and another for the exposure. It's also a good idea to add another argument to specify the dataset to use in the model.
+
+`map2` and `pmap` are variant of `map` that can iterate over two or many arguments simultaneously.
+
+All the functions that we will create can be saved in `R/models.R`, remember to source this file in your script.
+
+**Exercice**: Create a function to build the `glm` models. Use `map2` to apply the function for all combinaisons of outcomes and exposures.
+
+::: callout-note
+`tidyr::expand_grid()` create a table from a combinations of vectors. You should use it to get all the combinaison of outcomes and exposures
+:::
+
+::: callout-note
+It can be diffcult to create a function form scratch especially when working with list. 
+It's sometime easier to first works with one element of the list to test the function.
+
+```{r}
+#| eval: false
+test_model <- models[[1]]
+```
+:::
+
+
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+build_model <- function(outcome, exposure, dataset) {
+  formula <- paste0(
+    outcome, " ~ ",
+    exposure, " + age_screening + gender"
+  ) |>
+    as.formula()
+
+  try(
+    glm(formula, data = dataset)
+  )
+}
+
+# List outcomes
+outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
+exposures <- c("creatinine", "lead", "barium", "cadmium")
+
+
+models_parameters <- tidyr::expand_grid(outcomes, exposures)
+
+models <- map2(
+  .x = models_parameters$outcomes,
+  .y = models_parameters$exposures,
+  .f = \(x, y) build_model(x, y, dataset = nh2007)
+)
+```
+
+- `try()` helps when models don't run for any reason. This allow `map` to continue instead of stoping
+- `.f = \(x, y) build_model(x, y, dataset = nh2007)` this line help passing a common element to all the models. Here it's the dataset that we want to use for the models. 
+Of course this dataset can also be passed using `pmap` but it can be a little bit tricky.
+:::
+
+Once again all the models are in a list. It's easy to access one model using indexes `models[[1]]` but it's a bit crude. It possible to improve that by: 
+
+- assigning names to each list element from the model parameters, to access models using a `$` sign.
+- putting the models in a column in the models parameters dataframe (often a better solution).
+
+## Extract models results
+
+**Exercice:** Create a function to extract estimates, CI, p-pvalue and AIC from a model. Use `map` to apply it to every model.
+
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+#| warning: false
+extract_model_result <- function(model) {
+  # Get coefficients
+  coefs <- coef(summary(model)) |>
+    as.data.frame()
+
+  # confidence interval
+  ci <- confint(model) |>
+    as.data.frame()
+
+  # AIC
+  aic <- model$aic
+
+  # Return a dataframe
+  cbind(
+    coefs,
+    ci,
+    aic
+  ) |>
+    rownames_to_column(var = "term")
+}
+
+# Extract model results
+models_results <- map(models, extract_model_result)
+```
+
+- `expand_grid()` create a table from all combinations of inputs, it's very usefull to get all the 21 models from the exposure and outcomes
+
+The `broom` package is a very nice interface to reliably extract models results in a consistent way. It can easily replace this custom made function: https://broom.tidymodels.org/
+:::
+
+# Make a table using `gt`
+
+## Prepare the data
+
+In this part, we will just do one table because gt package has many options and it can be the topic of a whole workshop. Feel to experiment with it later if you have time, for example to create a table for the descriptive statistics 
+
+Before creating a gt table, it's best to have a clean table with only the informations that we want to present. First step is to regroup in one table the models parameters, models and models results. 
+
+```{r}
+results <- models_parameters |>
+  dplyr::mutate(
+    models = models,
+    models_results = models_results
+  )
+```
+
+Then we can `unnest()` the models_results in the dataframe, and filter the terms from the model results to keep only the terme matching the exposure of the model.
+
+```{r}
+results_short <- results |>
+  unnest(models_results) |>
+  dplyr::filter(exposures == term) |>
+  select(-models)
+
+head(results_short)
+```
+
+Now the table is simple and it's possible to create a `gt` table and to go handle all the formating
+
+## Create the `gt` table
+
+In order to create the table the following steps needs to be taken:
+
+1. Initialize the gt table object
+
+```{r}
+library(gt)
+gt_table <- gt(
+  data = results_short,
+  rowname_col = "Outcome",
+  groupname_col = "outcomes"
+)
+
+gt_table
+```
+
   
-  **1. Importance of Transparent Statistical Analysis (15 minutes):**
-  - Discuss the critical role of transparent statistical analysis in reproducibility.
-- Emphasize the need for clear and well-documented statistical methods to facilitate replication and validation of results.
-- Introduce the concept of open statistical practices.
-- Reference materials:
-  - **Paper:** Wasserstein, R. L., & Lazar, N. A. (2016). The ASA's statement on p-values: Context, process, and purpose. The American Statistician, 70(2), 129-133. [Link](https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108)
+2. Format numbers
 
-**2. Using Coding Best Practices for Reproducibility (15 minutes):**
-   - Discuss coding best practices that enhance the reproducibility of statistical analyses (e.g., script organization, commenting, modularization).
-   - Introduce literate programming concepts (e.g., R Markdown, Jupyter Notebooks) to integrate code and documentation.
-   - Share examples of well-documented and reproducible statistical analyses.
-   - Reference materials:
-     - **Guide:** "R Markdown: The Definitive Guide" by Yihui Xie, J. J. Allaire, & Garrett Grolemund. [Link](https://bookdown.org/yihui/rmarkdown/)
-     - **Guide:** "Jupyter Notebook Best Practices" by Quantecon. [Link](https://quantecon.org/jupyter.html)
+```{r}
+gt_table <- gt_table |>
+  fmt_number(
+    columns = c("Estimate", "2.5 %", "97.5 %"),
+    decimals = 3
+  ) |>
+  fmt(
+    columns = "Pr(>|t|)",
+    fns = \(x) format.pval(x, digits = 3)
+  )
+```
 
-**3. Avoiding Common Pitfalls in Statistical Analysis (15 minutes):**
-   - Highlight common pitfalls that can compromise the reproducibility of statistical analyses (e.g., overfitting, p-hacking).
-   - Discuss strategies for addressing these pitfalls and promoting robust statistical practices.
-   - Reference materials:
-     - **Paper:** Colquhoun, D. (2014). An investigation of the false discovery rate and the misinterpretation of p-values. Royal Society Open Science, 1(3), 140216. [Link](https://royalsocietypublishing.org/doi/full/10.1098/rsos.140216)
+3. Merge and hide columns
+```{r}
+gt_table <- gt_table |>
+  cols_merge(
+    columns = c("2.5 %", "97.5 %"),
+    pattern = "{1} - {2}"
+  ) |>
+  cols_hide(
+    columns = c("Std. Error", "t value", "term")
+  ) |>
+  cols_label("2.5 %" = "95% CI")
+```
 
-**Hands-on Activity 3: Creating Reproducible Analysis Scripts (30 minutes):**
-   - Engage participants in a hands-on activity where they will work with sample datasets to perform statistical analyses using best coding practices.
-   - Encourage participants to create a reproducible analysis script (e.g., R script, Jupyter Notebook) that includes code, visualizations, and interpretations.
-   - Facilitate discussions on challenges faced during the activity and solutions adopted.
+4. Add table title and subtitle
 
-**Additional Resources:**
-   - **Course:** "Reproducible Research and Reports with R Markdown" by Coursera. [Link](https://www.coursera.org/learn/reproducible-research)
-   - **Article:** "Best Practices for Statistical Data Analysis" by Nature Methods. [Link](https://www.nature.com/articles/nmeth.2613)
+```{r}
+gt_table <- gt_table %>%
+  tab_header(
+    title = "Models results",
+    subtitle = "data = nh2007"
+  )
 
-**Note:** Adapt the session content based on the statistical software commonly used by participants (e.g., R, Python, SAS). Encourage participants to apply the principles learned in the hands-on activity to their own statistical analyses.
+gt_table
+```
+
+All this gt pipeline can be regrouped in one function, for example `gt_models()`, with only  `results_clean` as argument. This mean that you can easily re-apply the function to each results table and get identical results!
+
+**Exercice:** Create this function and add it to `R/gt_models.R`. 
+
+::: {.callout-tip title="Solution" collapse="true"}
+
+
+```{r}
+gt_models <- function(results_model_clean) {
+  library(gt)
+  # 1. Initialize the gt table object
+  gt(
+    data = results_short,
+    rowname_col = "Outcome",
+    groupname_col = "outcomes"
+  ) |>
+    # 2. Format numbers
+    fmt_number(
+      columns = c("Estimate", "2.5 %", "97.5 %"),
+      decimals = 3
+    ) |>
+    fmt(
+      columns = "Pr(>|t|)",
+      fns = \(x) format.pval(x, digits = 3)
+    ) |>
+    # 3. Merge and hide columns
+    cols_merge(
+      columns = c("2.5 %", "97.5 %"),
+      pattern = "{1} - {2}"
+    ) |>
+    cols_hide(
+      columns = c("Std. Error", "t value", "term")
+    ) |>
+    cols_label("2.5 %" = "95% CI") |>
+    # 4. Add table title and subtitle
+    tab_header(
+      title = "Models results"
+  )
+  
+}
+```
+
+Remember to commit this new function and to sourceit in your main script
+:::
+
+
+# Generate the report with quarto
+
+Now that we have nany functions and a nice table, we can put them in a quarto documents to generate either `html` or `docx` documents.
+
+In RStudio create a new file: `qmd/report.qmd`
+In the report we should include a yaml header defining some execution parameters: 
+
+```yaml
+---
+title: "NHANES Report"
+author: "Your Name"
+date: "2024-05-31"
+output: html_document # or docx
+---
+```
+
+R code can then be excuted within chunks. The first chunck should load all the package and source all your functions: 
+````markdown
+```{{r}}
+# Load packages
+library(tidyverse)
+source("../R/descriptive.R")
+source("../R/models.R")
+source("../R/gt_models.R")
+# .. is needed to refer to the project root
+
+# Alternative using the here package
+source(here("R/descriptive.R"))
+source(here("R/models.R"))
+source(here("R/gt_models.R"))
+```
+````
+
+In between each chunck you can add text to describe what you did, or event write some methods points that you need to remember for later. The syntax in this part is done in markdown.
+
+The following chunks can contains all the line that include map functions. 
+
+**Exercice:** Convert your starting script in a quarto document
+
+
+## 2009 report
+
+Now that the functions are all created, adding the analysis for the `nh2009` dataset is simple as it's only needed to apply the same function on another dataset. 
+
+The report can divided in two sections: 
+```markdown
+# 2007
+
+... 2007 analysis
+
+# 2009
+... 2009 analysis
+```
+
+The onnly things that need to be copy paste is the datamangement part. The script for the 2009 analysis can look like that:
+
+
+```{r}
+#| eval: false
+load(here("data/nh2009.RData"))
+
+# Descriptive stats
+purrr::map(.x = nh2009, .f = compute_descriptive_stats) |>
+  dplyr::bind_rows(.id = "column")
+
+# List outcomes
+outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
+exposures <- c("creatinine", "lead", "barium", "cadmium")
+
+
+models_parameters_2009 <- tidyr::expand_grid(outcomes, exposures)
+
+models_2009 <- map2(
+  .x = models_parameters_2009$outcomes,
+  .y = models_parameters_2009$exposures,
+  .f = \(x, y) build_model(x, y, dataset = nh2009) # we need to change the dataset
+)
+
+# Extract model results
+models_results_2009 <- map(models_2009, extract_model_result)
+
+results_2009 <- models_parameters_2009 |>
+  dplyr::mutate(
+    models = models_2009,
+    models_results = models_results_2009
+  )
+
+results_model_clean_2009 <- results_2009 |>
+  unnest(models_results) |>
+  dplyr::filter(exposures == term) |>
+  select(-models)
+
+gt_models(results_model_clean_2009)
+```
+
+**Exercice:** Intergrate the following lines in the report document
+
+![](/img/meme_final.png){fig-align="center"}
+

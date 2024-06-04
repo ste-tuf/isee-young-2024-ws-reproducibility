@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Stephane Tuffier">
+<meta name="dcterms.date" content="2024-06-05">
 
-<title>ISEE young 2024 - WS8 - Reproducitiliby – exercise_2</title>
+<title>ISEE young 2024 - WS8 - Reproducitiliby - Hands-on Activity 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,6 +133,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../content/01_intro.html" rel="" target="">
+ <span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/02_exercise_1.html" rel="" target="">
+ <span class="menu-text">Hands-on Activity 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../content/03_exercise_2.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Hands-on Activity 2</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -150,46 +164,445 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a></li>
+  <li><a href="#fonctionnal-programing" id="toc-fonctionnal-programing" class="nav-link" data-scroll-target="#fonctionnal-programing">Fonctionnal programing</a>
+  <ul class="collapse">
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
+  <li><a href="#extract-models-results" id="toc-extract-models-results" class="nav-link" data-scroll-target="#extract-models-results">Extract models results</a></li>
+  </ul></li>
+  <li><a href="#make-a-table-using-gt" id="toc-make-a-table-using-gt" class="nav-link" data-scroll-target="#make-a-table-using-gt">Make a table using <code>gt</code></a>
+  <ul class="collapse">
+  <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link" data-scroll-target="#prepare-the-data">Prepare the data</a></li>
+  <li><a href="#create-the-gt-table" id="toc-create-the-gt-table" class="nav-link" data-scroll-target="#create-the-gt-table">Create the <code>gt</code> table</a></li>
+  </ul></li>
+  <li><a href="#generate-the-report-with-quarto" id="toc-generate-the-report-with-quarto" class="nav-link" data-scroll-target="#generate-the-report-with-quarto">Generate the report with quarto</a>
+  <ul class="collapse">
+  <li><a href="#report" id="toc-report" class="nav-link" data-scroll-target="#report">2009 report</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hands-on Activity 2</h1>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stephane Tuffier </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 5, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<div>
+<iframe class="slide-deck" src="03_slides_theory_2.html" width="100%" height="500px"></iframe>
+</div>
+</section>
+<section id="goal" class="level1">
+<h1>Goal</h1>
+<p>At the end of this exercice you should be able to produce a html documents containing at least one table to summarise models results using <code>gt</code> and <code>quarto</code> with the <code>nh2007</code> dataset. If we have enougth time we will be able to quickly reproduce the analysis with the <code>nh2009</code> dataset.</p>
+</section>
+<section id="tasks" class="level1">
+<h1>Tasks</h1>
+<ul>
+<li>Improve and simplify the code using functionnal programming</li>
+<li>Create a qmd document to genereate a report using quarto</li>
+<li>Make a table using <code>gt</code> to summarise model results</li>
+<li>Continue to use git to save your progress</li>
+</ul>
+</section>
+<section id="fonctionnal-programing" class="level1">
+<h1>Fonctionnal programing</h1>
+<section id="descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h2>
+<p>Let’s look at the script that we finish before the break. We created some functions that we now use for all the descriptive statistics. However we stil had to copy paste the call many times.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Code,                                   <span class="sc">~</span>Value.Description,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"1"</span>,                                <span class="st">"Less Than 9th Grade"</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">"2"</span>, <span class="st">"9-11th Grade (Includes 12th grade with no diploma)"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">"3"</span>,                 <span class="st">"High School Grad/GED or Equivalent"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">"4"</span>,                          <span class="st">"Some College or AA degree"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">"5"</span>,                          <span class="st">"College Graduate or above"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">"7"</span>,                                            <span class="st">"Refused"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">"9"</span>,                                         <span class="st">"Don't Know"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">"."</span>,                                            <span class="st">"Missing"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_header</span>(<span class="st">"Codebook for Education Level - Adults 20+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numbers</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>gender)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>education)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>education_child)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>asthma)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>heart_failure)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>coronary_heart_disease)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>creatinine)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>lead)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>barium)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>cadmium)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Graph</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>creatinine)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>lead)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>barium)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>cadmium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercice:</strong> Can you figure out how to use <code>map</code> to avoid copy pasting the call</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>map</code> can take a dataframe as first argument and will apply the function to each column of the data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2007, <span class="at">.f =</span> compute_descriptive_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For the descriptive graphs we can first use <code>dplyr::select()</code> to select the four columns of interest:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n2007 <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(creatinine, lead, barium, cadmium) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(, <span class="at">.f =</span> compute_descriptive_graph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p><code>map</code> return a list by default:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2007, <span class="at">.f =</span> compute_descriptive_stats) <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$id
+$id$mean
+[1] 46562.61
+
+$id$sd
+[1] 2966.326
+
+$id$quantiles
+      0%      25%      50%      75%     100% 
+41477.00 44060.75 46513.00 49178.75 51622.00 
+
+
+$gender
+variable
+   1    2 &lt;NA&gt; 
+1022 1012    0 
+
+$age_screening
+$age_screening$mean
+[1] 47.41593
+
+$age_screening$sd
+[1] 19.2215
+
+$age_screening$quantiles
+  0%  25%  50%  75% 100% 
+  16   31   47   63   80 </code></pre>
+</div>
+</div>
+<p>List are not so easy to work with because functions are mainly build to use a dataframe. However it’s very easy to modify <code>compute_table</code> and <code>compute_numeric</code> to return statistics in a different format.</p>
+<p>When the two functions return a dataframe, it’s then possible to use <code>dplyr::bind_rows()</code> to bind all the elements of the list from <code>map</code> in a single dataframe.</p>
+<p>Let’s first change the two compute functions and load them in our environment:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>compute_table <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return frequency table as a dataframe</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(variable, <span class="at">useNA =</span> <span class="st">"always"</span>, <span class="at">dnn =</span> <span class="st">"level"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>compute_numeric <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  mean_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(variable, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  sd_value <span class="ot">&lt;-</span> <span class="fu">sd</span>(variable, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  quantiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(variable, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return statistics as a dataframe</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"mean"</span> <span class="ot">=</span> mean_value,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">"sd"</span> <span class="ot">=</span> sd_value</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t</span>(quantiles)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we can run again the lines with map:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2007, <span class="at">.f =</span> compute_descriptive_stats) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"column"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         column        mean        sd    0%      25%   50%      75%  100% level
+1            id 46562.61406 2966.3259 41477 44060.75 46513 49178.75 51622  &lt;NA&gt;
+2        gender          NA        NA    NA       NA    NA       NA    NA     1
+3        gender          NA        NA    NA       NA    NA       NA    NA     2
+4        gender          NA        NA    NA       NA    NA       NA    NA  &lt;NA&gt;
+5 age_screening    47.41593   19.2215    16    31.00    47    63.00    80  &lt;NA&gt;
+  Freq
+1   NA
+2 1022
+3 1012
+4    0
+5   NA</code></pre>
+</div>
+</div>
+<p>The result is already much better and easier, notice that we didn’t had to change the <code>compute_descriptive_stats()</code> function but only the computation functions. This is because there is no calculation happening in <code>compute_descriptive_stats()</code>: it’s only calling the compute functions for each type of variable.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When modifying functions, it’s a good idea to commit the new changes to be able to revert any bad changes.</p>
+<p>Jump in Git-gui and commit the new changes to the functions. Repeat</p>
+</div>
+</div>
+</section>
+<section id="models" class="level2">
+<h2 class="anchored" data-anchor-id="models">Models</h2>
+<p>We can also use functionnal programming to simplify the creation of the models. For the 4 outcomes and the 4 exposures the models are always the same:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creatinine</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.1</span>a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>b <span class="ot">&lt;-</span> <span class="fu">glm</span>(heart_failure <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>c <span class="ot">&lt;-</span> <span class="fu">glm</span>(coronary_heart_disease <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>d <span class="ot">&lt;-</span> <span class="fu">glm</span>(heart_attack <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>e <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007) <span class="co"># Notice that this model is identical to 1a, but it's hard to notice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The custom function to create need to have at least 2 arugments: one argument for the outcome and another for the exposure. It’s also a good idea to add another argument to specify the dataset to use in the model.</p>
+<p><code>map2</code> and <code>pmap</code> are variant of <code>map</code> that can iterate over two or many arguments simultaneously.</p>
+<p>All the functions that we will create can be saved in <code>R/models.R</code>, remember to source this file in your script.</p>
+<p><strong>Exercice</strong>: Create a function to build the <code>glm</code> models. Use <code>map2</code> to apply the function for all combinaisons of outcomes and exposures.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>tidyr::expand_grid()</code> create a table from a combinations of vectors. You should use it to get all the combinaison of outcomes and exposures</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It can be diffcult to create a function form scratch especially when working with list. It’s sometime easier to first works with one element of the list to test the function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>test_model <span class="ot">&lt;-</span> models[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>build_model <span class="ot">&lt;-</span> <span class="cf">function</span>(outcome, exposure, dataset) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  formula <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    outcome, <span class="st">" ~ "</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    exposure, <span class="st">" + age_screening + gender"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.formula</span>()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">try</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glm</span>(formula, <span class="at">data =</span> dataset)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># List outcomes</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"asthma"</span>, <span class="st">"heart_failure"</span>, <span class="st">"coronary_heart_disease"</span>, <span class="st">"heart_attack"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"creatinine"</span>, <span class="st">"lead"</span>, <span class="st">"barium"</span>, <span class="st">"cadmium"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>models_parameters <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">expand_grid</span>(outcomes, exposures)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">map2</span>(</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> models_parameters<span class="sc">$</span>outcomes,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">.y =</span> models_parameters<span class="sc">$</span>exposures,</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x, y) <span class="fu">build_model</span>(x, y, <span class="at">dataset =</span> nh2007)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>try()</code> helps when models don’t run for any reason. This allow <code>map</code> to continue instead of stoping</li>
+<li><code>.f = \(x, y) build_model(x, y, dataset = nh2007)</code> this line help passing a common element to all the models. Here it’s the dataset that we want to use for the models. Of course this dataset can also be passed using <code>pmap</code> but it can be a little bit tricky.</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Once again all the models are in a list. It’s easy to access one model using indexes <code>models[[1]]</code> but it’s a bit crude. It possible to improve that by:</p>
+<ul>
+<li>assigning names to each list element from the model parameters, to access models using a <code>$</code> sign.</li>
+<li>putting the models in a column in the models parameters dataframe (often a better solution).</li>
+</ul>
+</section>
+<section id="extract-models-results" class="level2">
+<h2 class="anchored" data-anchor-id="extract-models-results">Extract models results</h2>
+<p><strong>Exercice:</strong> Create a function to extract estimates, CI, p-pvalue and AIC from a model. Use <code>map</code> to apply it to every model.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>extract_model_result <span class="ot">&lt;-</span> <span class="cf">function</span>(model) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get coefficients</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  coefs <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model)) <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># confidence interval</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ci <span class="ot">&lt;-</span> <span class="fu">confint</span>(model) <span class="sc">|&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>()</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># AIC</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  aic <span class="ot">&lt;-</span> model<span class="sc">$</span>aic</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return a dataframe</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    coefs,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    ci,</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    aic</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"term"</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract model results</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>models_results <span class="ot">&lt;-</span> <span class="fu">map</span>(models, extract_model_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>expand_grid()</code> create a table from all combinations of inputs, it’s very usefull to get all the 21 models from the exposure and outcomes</li>
+</ul>
+<p>The <code>broom</code> package is a very nice interface to reliably extract models results in a consistent way. It can easily replace this custom made function: https://broom.tidymodels.org/</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="make-a-table-using-gt" class="level1">
+<h1>Make a table using <code>gt</code></h1>
+<section id="prepare-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-the-data">Prepare the data</h2>
+<p>In this part, we will just do one table because gt package has many options and it can be the topic of a whole workshop. Feel to experiment with it later if you have time, for example to create a table for the descriptive statistics</p>
+<p>Before creating a gt table, it’s best to have a clean table with only the informations that we want to present. First step is to regroup in one table the models parameters, models and models results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> models_parameters <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> models,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">models_results =</span> models_results</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we can <code>unnest()</code> the models_results in the dataframe, and filter the terms from the model results to keep only the terme matching the exposure of the model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>results_short <span class="ot">&lt;-</span> results <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(models_results) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(exposures <span class="sc">==</span> term) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>models)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(results_short)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 10
+  outcomes   exposures term  Estimate `Std. Error` `t value` `Pr(&gt;|t|)`  `2.5 %`
+  &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+1 asthma     creatini… crea… -1.67e-4    0.000111    -1.50        0.135 -3.85e-4
+2 asthma     lead      lead   2.38e-3    0.00555      0.429       0.668 -8.49e-3
+3 asthma     barium    bari… -3.03e-3    0.00212     -1.43        0.153 -7.18e-3
+4 asthma     cadmium   cadm…  1.20e-3    0.0183       0.0654      0.948 -3.47e-2
+5 heart_fai… creatini… crea… -2.77e-5    0.0000542   -0.511       0.609 -1.34e-4
+6 heart_fai… lead      lead  -2.68e-3    0.00255     -1.05        0.293 -7.67e-3
+# ℹ 2 more variables: `97.5 %` &lt;dbl&gt;, aic &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Now the table is simple and it’s possible to create a <code>gt</code> table and to go handle all the formating</p>
+</section>
+<section id="create-the-gt-table" class="level2">
+<h2 class="anchored" data-anchor-id="create-the-gt-table">Create the <code>gt</code> table</h2>
+<p>In order to create the table the following steps needs to be taken:</p>
+<ol type="1">
+<li>Initialize the gt table object</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gt' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gt_table <span class="ot">&lt;-</span> <span class="fu">gt</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> results_short,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">rowname_col =</span> <span class="st">"Outcome"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">groupname_col =</span> <span class="st">"outcomes"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>gt_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="qbhkmoqrai" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qbhkmoqrai table {
+<div id="xiunqaxxcp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xiunqaxxcp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qbhkmoqrai thead, #qbhkmoqrai tbody, #qbhkmoqrai tfoot, #qbhkmoqrai tr, #qbhkmoqrai td, #qbhkmoqrai th {
+#xiunqaxxcp thead, #xiunqaxxcp tbody, #xiunqaxxcp tfoot, #xiunqaxxcp tr, #xiunqaxxcp td, #xiunqaxxcp th {
   border-style: none;
 }
 
-#qbhkmoqrai p {
+#xiunqaxxcp p {
   margin: 0;
   padding: 0;
 }
 
-#qbhkmoqrai .gt_table {
+#xiunqaxxcp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -215,12 +628,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_caption {
+#xiunqaxxcp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qbhkmoqrai .gt_title {
+#xiunqaxxcp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -232,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#qbhkmoqrai .gt_subtitle {
+#xiunqaxxcp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -244,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#qbhkmoqrai .gt_heading {
+#xiunqaxxcp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -256,13 +669,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_bottom_border {
+#xiunqaxxcp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_col_headings {
+#xiunqaxxcp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -277,7 +690,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_col_heading {
+#xiunqaxxcp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -297,7 +710,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#qbhkmoqrai .gt_column_spanner_outer {
+#xiunqaxxcp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -309,15 +722,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#qbhkmoqrai .gt_column_spanner_outer:first-child {
+#xiunqaxxcp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qbhkmoqrai .gt_column_spanner_outer:last-child {
+#xiunqaxxcp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qbhkmoqrai .gt_column_spanner {
+#xiunqaxxcp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -329,11 +742,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#qbhkmoqrai .gt_spanner_row {
+#xiunqaxxcp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qbhkmoqrai .gt_group_heading {
+#xiunqaxxcp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -359,7 +772,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#qbhkmoqrai .gt_empty_group_heading {
+#xiunqaxxcp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -374,15 +787,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#qbhkmoqrai .gt_from_md > :first-child {
+#xiunqaxxcp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qbhkmoqrai .gt_from_md > :last-child {
+#xiunqaxxcp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qbhkmoqrai .gt_row {
+#xiunqaxxcp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -401,7 +814,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#qbhkmoqrai .gt_stub {
+#xiunqaxxcp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -414,7 +827,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qbhkmoqrai .gt_stub_row_group {
+#xiunqaxxcp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -428,15 +841,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#qbhkmoqrai .gt_row_group_first td {
+#xiunqaxxcp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qbhkmoqrai .gt_row_group_first th {
+#xiunqaxxcp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qbhkmoqrai .gt_summary_row {
+#xiunqaxxcp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -446,16 +859,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qbhkmoqrai .gt_first_summary_row {
+#xiunqaxxcp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_first_summary_row.thick {
+#xiunqaxxcp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qbhkmoqrai .gt_last_summary_row {
+#xiunqaxxcp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -465,7 +878,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_grand_summary_row {
+#xiunqaxxcp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -475,7 +888,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qbhkmoqrai .gt_first_grand_summary_row {
+#xiunqaxxcp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -485,7 +898,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_last_grand_summary_row_top {
+#xiunqaxxcp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -495,11 +908,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_striped {
+#xiunqaxxcp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qbhkmoqrai .gt_table_body {
+#xiunqaxxcp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -508,7 +921,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_footnotes {
+#xiunqaxxcp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -522,7 +935,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_footnote {
+#xiunqaxxcp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -531,7 +944,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qbhkmoqrai .gt_sourcenotes {
+#xiunqaxxcp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -545,7 +958,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#qbhkmoqrai .gt_sourcenote {
+#xiunqaxxcp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -553,94 +966,237 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#qbhkmoqrai .gt_left {
+#xiunqaxxcp .gt_left {
   text-align: left;
 }
 
-#qbhkmoqrai .gt_center {
+#xiunqaxxcp .gt_center {
   text-align: center;
 }
 
-#qbhkmoqrai .gt_right {
+#xiunqaxxcp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qbhkmoqrai .gt_font_normal {
+#xiunqaxxcp .gt_font_normal {
   font-weight: normal;
 }
 
-#qbhkmoqrai .gt_font_bold {
+#xiunqaxxcp .gt_font_bold {
   font-weight: bold;
 }
 
-#qbhkmoqrai .gt_font_italic {
+#xiunqaxxcp .gt_font_italic {
   font-style: italic;
 }
 
-#qbhkmoqrai .gt_super {
+#xiunqaxxcp .gt_super {
   font-size: 65%;
 }
 
-#qbhkmoqrai .gt_footnote_marks {
+#xiunqaxxcp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qbhkmoqrai .gt_asterisk {
+#xiunqaxxcp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qbhkmoqrai .gt_indent_1 {
+#xiunqaxxcp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qbhkmoqrai .gt_indent_2 {
+#xiunqaxxcp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qbhkmoqrai .gt_indent_3 {
+#xiunqaxxcp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qbhkmoqrai .gt_indent_4 {
+#xiunqaxxcp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qbhkmoqrai .gt_indent_5 {
+#xiunqaxxcp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
-    <tr class="gt_heading">
-      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Codebook for Education Level - Adults 20+</td>
-    </tr>
-    
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Code">Code</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Value.Description">Value.Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="exposures">exposures</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimate">Estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Std. Error">Std. Error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="t value">t value</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Pr(&amp;gt;|t|)">Pr(&gt;|t|)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="2.5 %">2.5 %</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="97.5 %">97.5 %</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="aic">aic</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td headers="Code" class="gt_row gt_right">1</td>
-<td headers="Value.Description" class="gt_row gt_left">Less Than 9th Grade</td></tr>
-    <tr><td headers="Code" class="gt_row gt_right">2</td>
-<td headers="Value.Description" class="gt_row gt_left">9-11th Grade (Includes 12th grade with no diploma)</td></tr>
-    <tr><td headers="Code" class="gt_row gt_right">3</td>
-<td headers="Value.Description" class="gt_row gt_left">High School Grad/GED or Equivalent</td></tr>
-    <tr><td headers="Code" class="gt_row gt_right">4</td>
-<td headers="Value.Description" class="gt_row gt_left">Some College or AA degree</td></tr>
-    <tr><td headers="Code" class="gt_row gt_right">5</td>
-<td headers="Value.Description" class="gt_row gt_left">College Graduate or above</td></tr>
-    <tr><td headers="Code" class="gt_row gt_right">7</td>
-<td headers="Value.Description" class="gt_row gt_left">Refused</td></tr>
-    <tr><td headers="Code" class="gt_row gt_right">9</td>
-<td headers="Value.Description" class="gt_row gt_left">Don't Know</td></tr>
-    <tr><td headers="Code" class="gt_row gt_right">.</td>
-<td headers="Value.Description" class="gt_row gt_left">Missing</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="9" class="gt_group_heading" scope="colgroup" id="asthma">asthma</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="asthma  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="asthma  term" class="gt_row gt_left">creatinine</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">-1.666218e-04</td>
+<td headers="asthma  Std. Error" class="gt_row gt_right">1.114468e-04</td>
+<td headers="asthma  t value" class="gt_row gt_right">-1.49507911</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.135049228</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">-0.0003850536</td>
+<td headers="asthma  97.5 %" class="gt_row gt_right">5.180995e-05</td>
+<td headers="asthma  aic" class="gt_row gt_right">1802.2351</td></tr>
+    <tr><td headers="asthma  exposures" class="gt_row gt_left">lead</td>
+<td headers="asthma  term" class="gt_row gt_left">lead</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">2.379870e-03</td>
+<td headers="asthma  Std. Error" class="gt_row gt_right">5.548226e-03</td>
+<td headers="asthma  t value" class="gt_row gt_right">0.42894247</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.668010610</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">-0.0084944533</td>
+<td headers="asthma  97.5 %" class="gt_row gt_right">1.325419e-02</td>
+<td headers="asthma  aic" class="gt_row gt_right">1804.2892</td></tr>
+    <tr><td headers="asthma  exposures" class="gt_row gt_left">barium</td>
+<td headers="asthma  term" class="gt_row gt_left">barium</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">-3.028811e-03</td>
+<td headers="asthma  Std. Error" class="gt_row gt_right">2.117844e-03</td>
+<td headers="asthma  t value" class="gt_row gt_right">-1.43013881</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.152831073</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">-0.0071797093</td>
+<td headers="asthma  97.5 %" class="gt_row gt_right">1.122087e-03</td>
+<td headers="asthma  aic" class="gt_row gt_right">1802.4252</td></tr>
+    <tr><td headers="asthma  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="asthma  term" class="gt_row gt_left">cadmium</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">1.198378e-03</td>
+<td headers="asthma  Std. Error" class="gt_row gt_right">1.831328e-02</td>
+<td headers="asthma  t value" class="gt_row gt_right">0.06543767</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.947831976</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">-0.0346949935</td>
+<td headers="asthma  97.5 %" class="gt_row gt_right">3.709175e-02</td>
+<td headers="asthma  aic" class="gt_row gt_right">1804.4692</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="9" class="gt_group_heading" scope="colgroup" id="heart_failure">heart_failure</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="heart_failure  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="heart_failure  term" class="gt_row gt_left">creatinine</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">-2.772027e-05</td>
+<td headers="heart_failure  Std. Error" class="gt_row gt_right">5.424036e-05</td>
+<td headers="heart_failure  t value" class="gt_row gt_right">-0.51106355</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.609367443</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">-0.0001340294</td>
+<td headers="heart_failure  97.5 %" class="gt_row gt_right">7.858888e-05</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1270.1983</td></tr>
+    <tr><td headers="heart_failure  exposures" class="gt_row gt_left">lead</td>
+<td headers="heart_failure  term" class="gt_row gt_left">lead</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">-2.676537e-03</td>
+<td headers="heart_failure  Std. Error" class="gt_row gt_right">2.545335e-03</td>
+<td headers="heart_failure  t value" class="gt_row gt_right">-1.05154615</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.293144934</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">-0.0076653009</td>
+<td headers="heart_failure  97.5 %" class="gt_row gt_right">2.312227e-03</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1271.0444</td></tr>
+    <tr><td headers="heart_failure  exposures" class="gt_row gt_left">barium</td>
+<td headers="heart_failure  term" class="gt_row gt_left">barium</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">-4.963558e-04</td>
+<td headers="heart_failure  Std. Error" class="gt_row gt_right">9.896629e-04</td>
+<td headers="heart_failure  t value" class="gt_row gt_right">-0.50154023</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.616050549</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">-0.0024360595</td>
+<td headers="heart_failure  97.5 %" class="gt_row gt_right">1.443348e-03</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1270.1887</td></tr>
+    <tr><td headers="heart_failure  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="heart_failure  term" class="gt_row gt_left">cadmium</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">2.474920e-03</td>
+<td headers="heart_failure  Std. Error" class="gt_row gt_right">8.393849e-03</td>
+<td headers="heart_failure  t value" class="gt_row gt_right">0.29484929</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.768142044</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">-0.0139767213</td>
+<td headers="heart_failure  97.5 %" class="gt_row gt_right">1.892656e-02</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1270.0237</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="9" class="gt_group_heading" scope="colgroup" id="coronary_heart_disease">coronary_heart_disease</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="coronary_heart_disease  term" class="gt_row gt_left">creatinine</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">-4.562735e-05</td>
+<td headers="coronary_heart_disease  Std. Error" class="gt_row gt_right">5.605650e-05</td>
+<td headers="coronary_heart_disease  t value" class="gt_row gt_right">-0.81395298</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.415776468</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">-0.0001554961</td>
+<td headers="coronary_heart_disease  97.5 %" class="gt_row gt_right">6.424136e-05</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1147.8785</td></tr>
+    <tr><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">lead</td>
+<td headers="coronary_heart_disease  term" class="gt_row gt_left">lead</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">-3.041374e-03</td>
+<td headers="coronary_heart_disease  Std. Error" class="gt_row gt_right">2.630681e-03</td>
+<td headers="coronary_heart_disease  t value" class="gt_row gt_right">-1.15611644</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.247782569</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">-0.0081974150</td>
+<td headers="coronary_heart_disease  97.5 %" class="gt_row gt_right">2.114667e-03</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1148.5536</td></tr>
+    <tr><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">barium</td>
+<td headers="coronary_heart_disease  term" class="gt_row gt_left">barium</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">-4.016007e-04</td>
+<td headers="coronary_heart_disease  Std. Error" class="gt_row gt_right">1.022938e-03</td>
+<td headers="coronary_heart_disease  t value" class="gt_row gt_right">-0.39259548</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.694663436</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">-0.0024065216</td>
+<td headers="coronary_heart_disease  97.5 %" class="gt_row gt_right">1.603320e-03</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1147.3691</td></tr>
+    <tr><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="coronary_heart_disease  term" class="gt_row gt_left">cadmium</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">1.448436e-02</td>
+<td headers="coronary_heart_disease  Std. Error" class="gt_row gt_right">8.669517e-03</td>
+<td headers="coronary_heart_disease  t value" class="gt_row gt_right">1.67072316</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.094945244</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">-0.0025075783</td>
+<td headers="coronary_heart_disease  97.5 %" class="gt_row gt_right">3.147630e-02</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1150.0099</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="9" class="gt_group_heading" scope="colgroup" id="heart_attack">heart_attack</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="heart_attack  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="heart_attack  term" class="gt_row gt_left">creatinine</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">-5.655582e-06</td>
+<td headers="heart_attack  Std. Error" class="gt_row gt_right">6.140079e-05</td>
+<td headers="heart_attack  t value" class="gt_row gt_right">-0.09210927</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.926621182</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">-0.0001259989</td>
+<td headers="heart_attack  97.5 %" class="gt_row gt_right">1.146878e-04</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-809.6718</td></tr>
+    <tr><td headers="heart_attack  exposures" class="gt_row gt_left">lead</td>
+<td headers="heart_attack  term" class="gt_row gt_left">lead</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">-3.008399e-03</td>
+<td headers="heart_attack  Std. Error" class="gt_row gt_right">2.881167e-03</td>
+<td headers="heart_attack  t value" class="gt_row gt_right">-1.04415985</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.296547637</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">-0.0086553836</td>
+<td headers="heart_attack  97.5 %" class="gt_row gt_right">2.638585e-03</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-810.7556</td></tr>
+    <tr><td headers="heart_attack  exposures" class="gt_row gt_left">barium</td>
+<td headers="heart_attack  term" class="gt_row gt_left">barium</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">-1.040694e-03</td>
+<td headers="heart_attack  Std. Error" class="gt_row gt_right">1.120050e-03</td>
+<td headers="heart_attack  t value" class="gt_row gt_right">-0.92914986</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.352932446</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">-0.0032359522</td>
+<td headers="heart_attack  97.5 %" class="gt_row gt_right">1.154563e-03</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-810.5283</td></tr>
+    <tr><td headers="heart_attack  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="heart_attack  term" class="gt_row gt_left">cadmium</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">2.642442e-02</td>
+<td headers="heart_attack  Std. Error" class="gt_row gt_right">9.481671e-03</td>
+<td headers="heart_attack  t value" class="gt_row gt_right">2.78689532</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.005375826</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">0.0078406907</td>
+<td headers="heart_attack  97.5 %" class="gt_row gt_right">4.500816e-02</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-817.4306</td></tr>
   </tbody>
   
   
@@ -648,22 +1204,741 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Session 3: Data Management and Documentation (45 minutes)</strong></p>
-<p><strong>1. Best Practices for Data Collection and Documentation (15 minutes):</strong> - Emphasize the importance of systematic and standardized data collection procedures in ensuring reproducibility. - Discuss common challenges in data collection and strategies to address them. - Highlight the significance of comprehensive documentation throughout the data collection process. - Reference materials: - <strong>Guide:</strong> “Ten Simple Rules for Effective Data Management” by Wilkinson, M. D., et al.&nbsp;<a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004525">Link</a></p>
-<p><strong>2. Data Cleaning and Preprocessing for Reproducibility (15 minutes):</strong> - Discuss the role of data cleaning and preprocessing in preparing high-quality, reproducible datasets. - Provide guidelines for identifying and handling missing data, outliers, and other common issues. - Share best practices for documenting data cleaning procedures. - Reference materials: - <strong>Book:</strong> “Data Wrangling with R” by Bradley Boehmke. <a href="https://bradleyboehmke.github.io/data_wrangling/">Link</a></p>
-<p><strong>3. Metadata and Codebook Creation (15 minutes):</strong> - Introduce the concept of metadata and its importance in providing context for datasets. - Discuss the creation of codebooks to document variable definitions, coding schemes, and any transformations applied to the data. - Showcase examples of well-documented metadata and codebooks. - Reference materials: - <strong>Guide:</strong> “Creating a Codebook” by ICPSR (Inter-university Consortium for Political and Social Research). <a href="https://www.icpsr.umich.edu/web/pages/portal/ICPSR/curation/datamanagement/codebook.html">Link</a></p>
-<p><strong>Hands-on Activity 2: Data Cleaning and Documentation (30 minutes):</strong> - Engage participants in a hands-on exercise where they work with a sample dataset to perform data cleaning and create documentation. - Encourage participants to share their approaches and discuss challenges faced during the activity. - Provide feedback and suggestions for improvement.</p>
-<p><strong>Additional Resources:</strong> - <strong>Article:</strong> “Data Management for Researchers: Organize, Maintain and Share Your Data for Research Success” by Kristin Briney. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3672722/">Link</a> - <strong>Webinar:</strong> “Effective Data Management for Epidemiologic Studies” by the Society for Epidemiologic Research. <a href="https://www.youtube.com/watch?v=ngB2RBUf0zU">Link</a></p>
-<p><strong>Note:</strong> Tailor the content based on the software commonly used by participants for data management and cleaning (e.g., R, Python, Excel). Encourage participants to apply the principles learned in the hands-on activity to their own research projects.</p>
-<p><strong>Session 4: Statistical Analysis and Code Reproducibility (45 minutes)</strong></p>
-<p><strong>1. Importance of Transparent Statistical Analysis (15 minutes):</strong> - Discuss the critical role of transparent statistical analysis in reproducibility. - Emphasize the need for clear and well-documented statistical methods to facilitate replication and validation of results. - Introduce the concept of open statistical practices. - Reference materials: - <strong>Paper:</strong> Wasserstein, R. L., &amp; Lazar, N. A. (2016). The ASA’s statement on p-values: Context, process, and purpose. The American Statistician, 70(2), 129-133. <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108">Link</a></p>
-<p><strong>2. Using Coding Best Practices for Reproducibility (15 minutes):</strong> - Discuss coding best practices that enhance the reproducibility of statistical analyses (e.g., script organization, commenting, modularization). - Introduce literate programming concepts (e.g., R Markdown, Jupyter Notebooks) to integrate code and documentation. - Share examples of well-documented and reproducible statistical analyses. - Reference materials: - <strong>Guide:</strong> “R Markdown: The Definitive Guide” by Yihui Xie, J. J. Allaire, &amp; Garrett Grolemund. <a href="https://bookdown.org/yihui/rmarkdown/">Link</a> - <strong>Guide:</strong> “Jupyter Notebook Best Practices” by Quantecon. <a href="https://quantecon.org/jupyter.html">Link</a></p>
-<p><strong>3. Avoiding Common Pitfalls in Statistical Analysis (15 minutes):</strong> - Highlight common pitfalls that can compromise the reproducibility of statistical analyses (e.g., overfitting, p-hacking). - Discuss strategies for addressing these pitfalls and promoting robust statistical practices. - Reference materials: - <strong>Paper:</strong> Colquhoun, D. (2014). An investigation of the false discovery rate and the misinterpretation of p-values. Royal Society Open Science, 1(3), 140216. <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsos.140216">Link</a></p>
-<p><strong>Hands-on Activity 3: Creating Reproducible Analysis Scripts (30 minutes):</strong> - Engage participants in a hands-on activity where they will work with sample datasets to perform statistical analyses using best coding practices. - Encourage participants to create a reproducible analysis script (e.g., R script, Jupyter Notebook) that includes code, visualizations, and interpretations. - Facilitate discussions on challenges faced during the activity and solutions adopted.</p>
-<p><strong>Additional Resources:</strong> - <strong>Course:</strong> “Reproducible Research and Reports with R Markdown” by Coursera. <a href="https://www.coursera.org/learn/reproducible-research">Link</a> - <strong>Article:</strong> “Best Practices for Statistical Data Analysis” by Nature Methods. <a href="https://www.nature.com/articles/nmeth.2613">Link</a></p>
-<p><strong>Note:</strong> Adapt the session content based on the statistical software commonly used by participants (e.g., R, Python, SAS). Encourage participants to apply the principles learned in the hands-on activity to their own statistical analyses.</p>
+<ol start="2" type="1">
+<li>Format numbers</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>gt_table <span class="ot">&lt;-</span> gt_table <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"Estimate"</span>, <span class="st">"2.5 %"</span>, <span class="st">"97.5 %"</span>),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">3</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt</span>(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">"Pr(&gt;|t|)"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fns =</span> \(x) <span class="fu">format.pval</span>(x, <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Merge and hide columns</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gt_table <span class="ot">&lt;-</span> gt_table <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_merge</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"2.5 %"</span>, <span class="st">"97.5 %"</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">"{1} - {2}"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_hide</span>(</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"Std. Error"</span>, <span class="st">"t value"</span>, <span class="st">"term"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="st">"2.5 %"</span> <span class="ot">=</span> <span class="st">"95% CI"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Add table title and subtitle</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gt_table <span class="ot">&lt;-</span> gt_table <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Models results"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"data = nh2007"</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>gt_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="pestjxxksw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pestjxxksw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pestjxxksw thead, #pestjxxksw tbody, #pestjxxksw tfoot, #pestjxxksw tr, #pestjxxksw td, #pestjxxksw th {
+  border-style: none;
+}
+
+#pestjxxksw p {
+  margin: 0;
+  padding: 0;
+}
+
+#pestjxxksw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pestjxxksw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pestjxxksw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pestjxxksw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pestjxxksw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pestjxxksw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pestjxxksw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pestjxxksw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pestjxxksw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pestjxxksw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pestjxxksw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pestjxxksw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pestjxxksw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pestjxxksw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pestjxxksw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pestjxxksw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pestjxxksw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pestjxxksw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pestjxxksw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pestjxxksw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pestjxxksw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pestjxxksw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pestjxxksw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pestjxxksw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pestjxxksw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pestjxxksw .gt_left {
+  text-align: left;
+}
+
+#pestjxxksw .gt_center {
+  text-align: center;
+}
+
+#pestjxxksw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pestjxxksw .gt_font_normal {
+  font-weight: normal;
+}
+
+#pestjxxksw .gt_font_bold {
+  font-weight: bold;
+}
+
+#pestjxxksw .gt_font_italic {
+  font-style: italic;
+}
+
+#pestjxxksw .gt_super {
+  font-size: 65%;
+}
+
+#pestjxxksw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pestjxxksw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pestjxxksw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pestjxxksw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pestjxxksw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pestjxxksw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pestjxxksw .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_title gt_font_normal" style="">Models results</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">data = nh2007</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="exposures">exposures</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimate">Estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Pr(&amp;gt;|t|)">Pr(&gt;|t|)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="95% CI">95% CI</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="aic">aic</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="asthma">asthma</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="asthma  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">0.000</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.13505</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">0.000 - 0.000</td>
+<td headers="asthma  aic" class="gt_row gt_right">1802.2351</td></tr>
+    <tr><td headers="asthma  exposures" class="gt_row gt_left">lead</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">0.002</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.66801</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">−0.008 - 0.013</td>
+<td headers="asthma  aic" class="gt_row gt_right">1804.2892</td></tr>
+    <tr><td headers="asthma  exposures" class="gt_row gt_left">barium</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">−0.003</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.15283</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">−0.007 - 0.001</td>
+<td headers="asthma  aic" class="gt_row gt_right">1802.4252</td></tr>
+    <tr><td headers="asthma  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="asthma  Estimate" class="gt_row gt_right">0.001</td>
+<td headers="asthma  Pr(>|t|)" class="gt_row gt_right">0.94783</td>
+<td headers="asthma  2.5 %" class="gt_row gt_right">−0.035 - 0.037</td>
+<td headers="asthma  aic" class="gt_row gt_right">1804.4692</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="heart_failure">heart_failure</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="heart_failure  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">0.000</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.60937</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">0.000 - 0.000</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1270.1983</td></tr>
+    <tr><td headers="heart_failure  exposures" class="gt_row gt_left">lead</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">−0.003</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.29314</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">−0.008 - 0.002</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1271.0444</td></tr>
+    <tr><td headers="heart_failure  exposures" class="gt_row gt_left">barium</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">0.000</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.61605</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">−0.002 - 0.001</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1270.1887</td></tr>
+    <tr><td headers="heart_failure  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="heart_failure  Estimate" class="gt_row gt_right">0.002</td>
+<td headers="heart_failure  Pr(>|t|)" class="gt_row gt_right">0.76814</td>
+<td headers="heart_failure  2.5 %" class="gt_row gt_right">−0.014 - 0.019</td>
+<td headers="heart_failure  aic" class="gt_row gt_right">-1270.0237</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="coronary_heart_disease">coronary_heart_disease</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">0.000</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.41578</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">0.000 - 0.000</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1147.8785</td></tr>
+    <tr><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">lead</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">−0.003</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.24778</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">−0.008 - 0.002</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1148.5536</td></tr>
+    <tr><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">barium</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">0.000</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.69466</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">−0.002 - 0.002</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1147.3691</td></tr>
+    <tr><td headers="coronary_heart_disease  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="coronary_heart_disease  Estimate" class="gt_row gt_right">0.014</td>
+<td headers="coronary_heart_disease  Pr(>|t|)" class="gt_row gt_right">0.09495</td>
+<td headers="coronary_heart_disease  2.5 %" class="gt_row gt_right">−0.003 - 0.031</td>
+<td headers="coronary_heart_disease  aic" class="gt_row gt_right">-1150.0099</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="heart_attack">heart_attack</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="heart_attack  exposures" class="gt_row gt_left">creatinine</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">0.000</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.92662</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">0.000 - 0.000</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-809.6718</td></tr>
+    <tr><td headers="heart_attack  exposures" class="gt_row gt_left">lead</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">−0.003</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.29655</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">−0.009 - 0.003</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-810.7556</td></tr>
+    <tr><td headers="heart_attack  exposures" class="gt_row gt_left">barium</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">−0.001</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.35293</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">−0.003 - 0.001</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-810.5283</td></tr>
+    <tr><td headers="heart_attack  exposures" class="gt_row gt_left">cadmium</td>
+<td headers="heart_attack  Estimate" class="gt_row gt_right">0.026</td>
+<td headers="heart_attack  Pr(>|t|)" class="gt_row gt_right">0.00538</td>
+<td headers="heart_attack  2.5 %" class="gt_row gt_right">0.008 - 0.045</td>
+<td headers="heart_attack  aic" class="gt_row gt_right">-817.4306</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<p>All this gt pipeline can be regrouped in one function, for example <code>gt_models()</code>, with only <code>results_clean</code> as argument. This mean that you can easily re-apply the function to each results table and get identical results!</p>
+<p><strong>Exercice:</strong> Create this function and add it to <code>R/gt_models.R</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gt_models <span class="ot">&lt;-</span> <span class="cf">function</span>(results_model_clean) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(gt)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Initialize the gt table object</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> results_short,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">rowname_col =</span> <span class="st">"Outcome"</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">groupname_col =</span> <span class="st">"outcomes"</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Format numbers</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fmt_number</span>(</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"Estimate"</span>, <span class="st">"2.5 %"</span>, <span class="st">"97.5 %"</span>),</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">decimals =</span> <span class="dv">3</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fmt</span>(</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">"Pr(&gt;|t|)"</span>,</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">fns =</span> \(x) <span class="fu">format.pval</span>(x, <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Merge and hide columns</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cols_merge</span>(</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"2.5 %"</span>, <span class="st">"97.5 %"</span>),</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">pattern =</span> <span class="st">"{1} - {2}"</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cols_hide</span>(</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"Std. Error"</span>, <span class="st">"t value"</span>, <span class="st">"term"</span>)</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cols_label</span>(<span class="st">"2.5 %"</span> <span class="ot">=</span> <span class="st">"95% CI"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Add table title and subtitle</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_header</span>(</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Models results"</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Remember to commit this new function and to sourceit in your main script</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="generate-the-report-with-quarto" class="level1">
+<h1>Generate the report with quarto</h1>
+<p>Now that we have nany functions and a nice table, we can put them in a quarto documents to generate either <code>html</code> or <code>docx</code> documents.</p>
+<p>In RStudio create a new file: <code>qmd/report.qmd</code> In the report we should include a yaml header defining some execution parameters:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"NHANES Report"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2024-05-31"</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span><span class="co"> # or docx</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>R code can then be excuted within chunks. The first chunck should load all the package and source all your functions:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/descriptive.R"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/models.R"</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/gt_models.R"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># .. is needed to refer to the project root</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative using the here package</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/descriptive.R"</span>))</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/models.R"</span>))</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/gt_models.R"</span>))</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In between each chunck you can add text to describe what you did, or event write some methods points that you need to remember for later. The syntax in this part is done in markdown.</p>
+<p>The following chunks can contains all the line that include map functions.</p>
+<p><strong>Exercice:</strong> Convert your starting script in a quarto document</p>
+<section id="report" class="level2">
+<h2 class="anchored" data-anchor-id="report">2009 report</h2>
+<p>Now that the functions are all created, adding the analysis for the <code>nh2009</code> dataset is simple as it’s only needed to apply the same function on another dataset.</p>
+<p>The report can divided in two sections:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2007</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>... 2007 analysis</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2009</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>... 2009 analysis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The onnly things that need to be copy paste is the datamangement part. The script for the 2009 analysis can look like that:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data/nh2009.RData"</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive stats</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2009, <span class="at">.f =</span> compute_descriptive_stats) <span class="sc">|&gt;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"column"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># List outcomes</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"asthma"</span>, <span class="st">"heart_failure"</span>, <span class="st">"coronary_heart_disease"</span>, <span class="st">"heart_attack"</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"creatinine"</span>, <span class="st">"lead"</span>, <span class="st">"barium"</span>, <span class="st">"cadmium"</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>models_parameters_2009 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">expand_grid</span>(outcomes, exposures)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>models_2009 <span class="ot">&lt;-</span> <span class="fu">map2</span>(</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> models_parameters_2009<span class="sc">$</span>outcomes,</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">.y =</span> models_parameters_2009<span class="sc">$</span>exposures,</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x, y) <span class="fu">build_model</span>(x, y, <span class="at">dataset =</span> nh2009) <span class="co"># we need to change the dataset</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract model results</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>models_results_2009 <span class="ot">&lt;-</span> <span class="fu">map</span>(models_2009, extract_model_result)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>results_2009 <span class="ot">&lt;-</span> models_parameters_2009 <span class="sc">|&gt;</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> models_2009,</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">models_results =</span> models_results_2009</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>results_model_clean_2009 <span class="ot">&lt;-</span> results_2009 <span class="sc">|&gt;</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(models_results) <span class="sc">|&gt;</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(exposures <span class="sc">==</span> term) <span class="sc">|&gt;</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>models)</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_models</span>(results_model_clean_2009)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercice:</strong> Intergrate the following lines in the report document</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="..\img/meme_final.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

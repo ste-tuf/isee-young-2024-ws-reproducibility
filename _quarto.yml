@@ -35,12 +35,8 @@ website:
         href: content/01_intro.qmd
       - text: Hands-on Activity 1
         href: content/02_exercise_1.qmd
-      # - text: Introduction
-      #   href: content/01_intro.qmd
-      # - text: Activity 1
-      #   href: content/02_exercise_1.qmd
-      # - text: Activity 2
-      #   href: content/03_exercise_2.qmd
+      - text: Hands-on Activity 2
+        href: content/03_exercise_2.qmd
     right: 
       - icon: github
         href: https://github.com/ste-tuf/isee-young-ws-reproducibility/

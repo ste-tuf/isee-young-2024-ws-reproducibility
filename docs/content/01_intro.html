@@ -99,6 +99,18 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="../content/01_intro.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/02_exercise_1.html" rel="" target="">
+ <span class="menu-text">Hands-on Activity 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/03_exercise_2.html" rel="" target="">
+ <span class="menu-text">Hands-on Activity 2</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -118,7 +130,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#general-context" id="toc-general-context" class="nav-link" data-scroll-target="#general-context">General context</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -152,45 +171,32 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="slides" class="level1">
+<h1>Slides</h1>
+<div>
+<iframe class="slide-deck" src="01_slides_intro.html" width="100%" height="500px"></iframe>
+</div>
+</section>
+<section id="general-context" class="level1">
+<h1>General context</h1>
+<p>The ultimate aim of this workshop is to make you able to start creating data analysis projects that are:</p>
 <ul>
-<li><strong>Introduction (20 minutes):</strong>
-<ul>
-<li>Welcome</li>
-<li>Importance of reproducibility in epidemiology research</li>
-<li>The principles of a reproducible workflow
-<ul>
-<li>Creating and organizing a project structure for reproducibility</li>
-<li>Avoiding copy pasting with functions</li>
-<li>Git basic to keep track your code</li>
-</ul></li>
-<li>Real-world examples and case studies</li>
-<li>Real-world examples</li>
-</ul></li>
+<li>self-contained (within a single folder)</li>
+<li>have a record of changes made to the files</li>
+<li>make it easier for others to collaborate</li>
+<li>make it simpler to connect the project with a scientific output like a paper</li>
+<li>to structure analyses to be more reproducible (or at least more easily inspectable).</li>
 </ul>
-<iframe class="slide-deck" src="slides_1.html"></iframe>
+<p>This is will:</p>
 <ul>
-<li><strong>Introduction (20 minutes):</strong>
-<ul>
-<li>Welcome</li>
-<li>Importance of reproducibility in epidemiology research</li>
-<li>The principles of a reproducible workflow
-<ul>
-<li>Creating and organizing a project structure for reproducibility</li>
-<li>Avoiding copy pasting with functions</li>
-<li>Git basic to keep track your code</li>
-</ul></li>
-<li>Real-world examples and case studies</li>
-</ul></li>
+<li>improve transparency of your reseach project</li>
+<li>make it easier to share both with your research team but also public, funding agency and other researcher</li>
+<li>facilitate the assessment of the quality of your work including peer review.</li>
 </ul>
-<p><strong>Session 1: Understanding Reproducibility (30 minutes)</strong></p>
-<p><strong>1. Defining Reproducibility and its Significance (10 minutes):</strong> - Provide a clear definition of reproducibility in the context of epidemiology research, emphasizing the ability to replicate study results using the same data and methods. - Highlight the importance of reproducibility for building trust in scientific findings and facilitating the validation of research outcomes. - Reference materials: - <strong>Paper:</strong> Peng, R. D. (2011). Reproducible research in computational science. Science, 334(6060), 1226-1227. <a href="https://science.sciencemag.org/content/334/6060/1226">Link</a></p>
-<p><strong>2. Common Challenges in Achieving Reproducibility in Epidemiology (10 minutes):</strong> - Discuss typical challenges and pitfalls in epidemiology research that hinder reproducibility, such as data manipulation errors, lack of transparency, and inadequate documentation. - Share examples of well-known cases where reproducibility issues have affected the credibility of research. - Reference materials: - <strong>Paper:</strong> Ioannidis, J. P. (2005). Why most published research findings are false. PLoS Medicine, 2(8), e124. <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124">Link</a></p>
-<p><strong>3. Real-World Examples and Case Studies (10 minutes):</strong> - Present real-world examples and case studies that illustrate the impact of reproducibility on epidemiological research. - Include instances of successful reproducibility and its positive effects on the scientific community. - Reference materials: - <strong>Paper:</strong> Nosek, B. A., Alter, G., Banks, G. C., Borsboom, D., Bowman, S. D., Breckler, S. J., … &amp; Contestabile, M. (2015). Promoting an open research culture. Science, 348(6242), 1422-1425. <a href="https://science.sciencemag.org/content/348/6242/1422">Link</a></p>
-<p><strong>Hands-on Activity: Reproducibility Challenge (30 minutes):</strong> - Engage participants in a short activity where they assess the reproducibility of a provided research paper or study. - Encourage them to identify potential challenges and propose solutions for improving reproducibility in the selected case. - Facilitate group discussions to share insights and findings.</p>
-<p><strong>Additional Resources:</strong> - <strong>Blog Post:</strong> “The Importance of Reproducibility in Epidemiology” by Simply Statistics. <a href="https://simplystatistics.org/2016/02/02/the-importance-of-reproducibility-in-epidemiology/">Link</a> - <strong>Webinar:</strong> “Reproducibility in Epidemiology” by the Center for Open Science. <a href="https://www.youtube.com/watch?v=tvjWe5HBv58">Link</a></p>
-<p><strong>Note:</strong> Customize the session content based on the participants’ level of familiarity with reproducibility concepts. Encourage active participation and discussions during the hands-on activity to reinforce key principles.</p>
+<p>Reproducible research is not just about R but more about research practices. We will do many non R things in this workshop.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

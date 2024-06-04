@@ -227,7 +227,7 @@ setwd("C:/folder/isee-analysis/")
 nh2007 <- load("C:/folder/isee-analysis/nh2007.Rdata")
 ```
 
-Exercice: Can you spot the issue there? How can we improve the loading
+**Exercice:** Can you spot the issue there? How can we improve the loading
 of the data within the project directory?
 
 ::: {.callout-tip title="Solution" collapse="true"}
@@ -409,6 +409,7 @@ To test variable type you can use the following code:
 ```{r}
 is.numeric(variable)
 is.factor(variable)
+is.logical(variable)
 ```
 
 ::: {.callout-tip title="Solution" collapse="true"}
@@ -418,7 +419,7 @@ compute_descriptive_stats <- function(variable) {
     statistics <- compute_numeric(variable)
   }
 
-  if (is.factor(variable)) {
+  if (is.factor(variable) || is.logical(variable)) {
     statistics <- compute_table(variable)
   }
 
@@ -460,7 +461,7 @@ least one additional feature not covered previously.
 Move all the new functions to a file in the R folder
 "descriptive_stats.R".
 
-Add a line to source "descriptive_stats.R" in "starting_script.R":
+Add a line to source "R/descriptive_stats.R" in "starting_script.R":
 
 ```{r}
 source("R/descriptive_stats.R")
