@@ -88,7 +88,7 @@
     "href": "content/01_slides_intro.html#lets-form-teams-of-3",
     "title": "Introduction",
     "section": "Let’s form teams of 3",
-    "text": "Let’s form teams of 3\n\nHave you ever created and used custom functions in R?\nCan you perform data manipulation tasks using dplyr or data.table?\nHave you written and executed an R script that includes statistical modeling or machine learning?\n\nIf you answered “No” to all three questions: Beginner If you answered “Yes” to one or two questions: Intermediate If you answered “Yes” to all three questions: Advanced\n\nLet’s mix things up and get to know each other! We’ll form teams of 3 with varying levels of R experience."
+    "text": "Let’s form teams of 3\n\nHave you ever created and used custom functions in R?\nDo you ever have use map functions from purrr of base R?\nHave you ever created a report using RMarkdown, Quarto or Jupyter notebook?\n\nIf you answered “No” to all three questions: Beginner\nIf you answered “Yes” to one or two questions: Intermediate\nIf you answered “Yes” to all three questions: Advanced\n\nLet’s mix things up and get to know each other! We’ll form teams of 3 with varying levels of R experience."
   },
   {
     "objectID": "content/01_slides_intro.html#references",

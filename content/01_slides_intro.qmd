@@ -127,14 +127,15 @@ instructions.
 ## Let's form teams of 3
 
 1.  Have you ever created and used custom functions in R?
-2.  Can you perform data manipulation tasks using `dplyr` or
-    `data.table`?
-3.  Have you written and executed an R script that includes statistical
-    modeling or machine learning?
+2.  Do you ever have use `map` functions from `purrr` of base R?
+3.  Have you ever created a report using RMarkdown, Quarto or Jupyter
+    notebook?
 
-If you answered "No" to all three questions: **Beginner** If you
-answered "Yes" to one or two questions: **Intermediate** If you answered
-"Yes" to all three questions: **Advanced**
+If you answered "No" to all three questions: **Beginner**
+
+If you answered "Yes" to one or two questions: **Intermediate**
+
+If you answered "Yes" to all three questions: **Advanced**
 
 ::: notes
 Let's mix things up and get to know each other! We'll form teams of 3
