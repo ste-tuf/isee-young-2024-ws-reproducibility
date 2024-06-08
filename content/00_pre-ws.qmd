@@ -1,6 +1,5 @@
 ---
 title: "Pre-workshop instructions"
-author: "Stephane Tuffier"
 date: 2024-06-05
 ---
 
@@ -48,7 +47,12 @@ according to your preferences.
 -   **Mac:** Download the installer from the [Git
     Downloads](https://git-scm.com/downloads) page and follow the
     installation instructions. As detailed on this page you will need to
-    install git-gui using homebrew: `brew install git-gui`
+    install git-gui using homebrew: 
+    
+    ``` bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install git-gui
+    ```
 
 -   **Linux:** Install Git using your package manager. On Ubuntu, use
     the following command:
@@ -87,7 +91,7 @@ Data used in the workshop is a sample of the NHANES study in particular 2007 and
 - [`nh2007.Rdata`](../data/nh2007.Rdata) 
 - [`nh2009.Rdata`](../data/nh2009.Rdata)
 
-<!-- If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R`. -->
+If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R` in the Github repository.
 
 # Getting scripts
 

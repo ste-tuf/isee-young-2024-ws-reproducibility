@@ -9,11 +9,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.324">
+  <meta name="generator" content="quarto-1.5.45">
 
   <meta name="author" content="Stéphane Tuffier">
   <meta name="dcterms.date" content="2024-06-05">
-  <title>ISEE young 2024 - WS8 - Reproducitiliby - Introduction</title>
+  <title>ISEE young 2024 - WS8 - Reproducibility – Introduction</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,6 +35,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -51,7 +52,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -179,7 +180,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -342,6 +344,8 @@
       margin-right: 0; 
     }
   </style>
+<meta property="og:title" content="ISEE young 2024 - WS8 - Reproducibility - Introduction">
+<meta property="og:site_name" content="ISEE young 2024 - WS8 - Reproducibility">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -363,7 +367,7 @@ Stéphane Tuffier
 <section id="section" class="slide level2 center" data-background-color="#0b6fa1">
 <h2></h2>
 
-<img data-src="https://imgs.xkcd.com/comics/coronavirus_genome.png" class="margin-caption r-stretch quarto-figure-center"><div class="footer">
+<img data-src="https://imgs.xkcd.com/comics/coronavirus_genome.png" class="margin-caption quarto-figure quarto-figure-center r-stretch"><div class="footer">
 <p>https://xkcd.com/2298</p>
 </div>
 </section>
@@ -448,7 +452,7 @@ Stéphane Tuffier
 <section id="reproducibility-2" class="slide level2">
 <h2>Reproducibility</h2>
 
-<img data-src="https://www.science.org/cms/10.1126/science.1213847/asset/f9cbf336-6179-40e1-876d-45f9591423a9/assets/graphic/334_1226_f1.jpeg" class="margin-caption r-stretch quarto-figure-center" alt="reproducibility spectrum"><div class="footer">
+<img data-src="..\img/spectrum.jpeg" class="margin-caption quarto-figure quarto-figure-center r-stretch" alt="reproducibility spectrum"><div class="footer">
 <p><span class="citation" data-cites="peng2011">Peng (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span></p>
 </div>
 </section>
@@ -481,7 +485,7 @@ Stéphane Tuffier
 <h2>Let’s form teams of 3</h2>
 <ol type="1">
 <li>Have you ever created and used custom functions in R?</li>
-<li>Do you ever have use <code>map</code> functions from <code>purrr</code> of base R?</li>
+<li>Do you ever have use <code>map</code> functions from <code>purrr</code> package?</li>
 <li>Have you ever created a report using RMarkdown, Quarto or Jupyter notebook?</li>
 </ol>
 <p>If you answered “No” to all three questions: <strong>Beginner</strong></p>
@@ -504,10 +508,12 @@ Stéphane Tuffier
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-nationalacademiesofsciences2019" class="csl-entry" role="listitem">
 National Academies of Sciences, Engineering, and Medicine. 2019. <em>Reproducibility and Replicability in Science</em>. Washington, DC: The National Academies Press. <a href="https://doi.org/10.17226/25303">https://doi.org/10.17226/25303</a>.
 </div>
@@ -543,7 +549,6 @@ Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -761,18 +766,7 @@ Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -804,11 +798,50 @@ Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/isee-young-ws-reproducibility\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -818,8 +851,17 @@ Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -833,7 +875,11 @@ Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

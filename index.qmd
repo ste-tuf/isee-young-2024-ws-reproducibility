@@ -1,6 +1,8 @@
 ---
 title: "Elevate your research with reproducibility science practices: a R workshop for young researcher in epidemiology"
-author: "Stephane Tuffier"
+author: 
+  - name: "Stéphane Tuffier"
+    url: https://www.tuffier.eu/about.html
 date: 2024-06-05
 ---
 
@@ -15,7 +17,7 @@ implement in their analysis and writing.
 
 ![](img/WS8.png)
 
-## Goals
+# Goals
 
 -   Explain what is a reproducibile analysis workflow
 
@@ -26,7 +28,7 @@ implement in their analysis and writing.
 
 -   Introduce to Git to track changes in your code
 
-## Program
+# Program
 
 -   **Introduction (20 minutes):**
 
@@ -96,6 +98,8 @@ Books:
 -   The carpentries. <https://carpentries.org/>
 -   What They Forgot to Teach You About R by Jennifer Bryan, Jim Hester,
     Shannon Pileggi, E. David Aja. <https://rstats.wtf/>
+-   Happy Git and GitHub for the useR by Jennyfer Bryan.
+    <https://happygitwithr.com/>
 
 Packages:
 
@@ -105,5 +109,29 @@ Packages:
 -   here: <https://here.r-lib.org/>
 -   broom: <https://broom.tidymodels.org/>
 
-Dataset: National Health and Nutrition Examination Survey (NHANES) from
-the CDC. <https://www.cdc.gov/nchs/nhanes/index.htm>
+Git:
+
+-   Pro Git book by Scott Chacon. <https://git-scm.com/book/en/v2>
+-   <https://ohmygit.org/>
+-   <https://learngitbranching.js.org>
+
+Dataset:
+
+-   National Health and Nutrition Examination Survey (NHANES) from
+    the CDC. <https://www.cdc.gov/nchs/nhanes/index.htm>
+
+# Re-use and licensing
+
+![](img/cc-by.png){width="100"}
+
+The course material is licensed under the [Creative Commons Attribution
+4.0 International
+License](https://creativecommons.org/licenses/by/4.0/), so the material
+can be used, re-used, and modified, as long as there is attribution to
+this source.
+
+# Issues and comments
+
+In case you encounter any error or strugle with the workshop material,
+you can report an issue in the left side menu. Feel free to
+contact me by email too.

@@ -1,7 +1,7 @@
 library(tidyverse)
 
 setwd("C:/folder/isee-analysis/")
-nh2007 <- load("C:/folder/isee-analysis/nh2007.Rdata")
+load("C:/folder/isee-analysis/nh2007.Rdata")
 
 
 # Demographic variables: id, gender, age_screening, education, education_child, marital_status

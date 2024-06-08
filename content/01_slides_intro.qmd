@@ -85,7 +85,7 @@ Almost all the steps of an epidemiology study can be involved!
 
 ## Reproducibility
 
-![](https://www.science.org/cms/10.1126/science.1213847/asset/f9cbf336-6179-40e1-876d-45f9591423a9/assets/graphic/334_1226_f1.jpeg){fig-alt="reproducibility spectrum"
+![](/img/spectrum.jpeg){fig-alt="reproducibility spectrum"
 fig-align="center"}
 
 ::: footer
@@ -127,7 +127,7 @@ instructions.
 ## Let's form teams of 3
 
 1.  Have you ever created and used custom functions in R?
-2.  Do you ever have use `map` functions from `purrr` of base R?
+2.  Do you ever have use `map` functions from `purrr` package?
 3.  Have you ever created a report using RMarkdown, Quarto or Jupyter
     notebook?
 

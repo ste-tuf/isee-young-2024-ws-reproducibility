@@ -1,1 +1,1 @@
-Sitemap: https://rstudio-conf-2022.github.io/ggplot2-graphic-design/sitemap.xml
+Sitemap: https://ste-tuf.github.io/isee-young-ws-reproducibility/sitemap.xml

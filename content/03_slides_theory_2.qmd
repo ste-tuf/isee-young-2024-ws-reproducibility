@@ -11,12 +11,12 @@ execute:
   eval: false
 ---
 
-##  
+## Plan {.center}
 
-1. Functional programming with `purrr`
-2. Report generation with Quarto
-3. Table creation with `gt`
-4. Bonus: Git branch and remote repo
+1.  Functional programming with `purrr`
+2.  Report generation with Quarto
+3.  Table creation with `gt`
+4.  Bonus: Git branch and remote repo
 
 ## Functional Programming in R with `purrr`
 
@@ -53,8 +53,7 @@ data manipulations, especially with lists and data frames.
 :::
 :::
 
-![](/img/purrr_pmap.png){fig-align="center"
-height="100"}
+![](/img/purrr_pmap.png){fig-align="center" height="100"}
 
 ## Functional Programming in R with `purrr`
 
@@ -75,14 +74,15 @@ meaning of map: To use a function on each item in a set of items.
 :::
 
 ::: notes
-- `map()`: Applies a function to each element of a list and returns a list
-- `map_lgl()`: Returns a logical vector
-- `map_int()`: Returns an integer vector
-- `map_dbl()`: Returns a double vector
-- `map_chr()`: Returns a character vector
-- `map_df()`: Applies a function to each element and returns a data frame
+-   `map()`: Applies a function to each element of a list and returns a
+    list
+-   `map_lgl()`: Returns a logical vector
+-   `map_int()`: Returns an integer vector
+-   `map_dbl()`: Returns a double vector
+-   `map_chr()`: Returns a character vector
+-   `map_df()`: Applies a function to each element and returns a data
+    frame
 :::
-
 
 ## Functional Programming in R with `purrr`
 
@@ -104,23 +104,20 @@ What is Quarto?
 
 -   Integrates code, text, and outputs in one document (HTML, DOCX)
 
-
 ![Quarto by Allison Horst](/img/quarto.png){fig-align="center"}
 
 ::: notes
 -   Produces HTML, PDF, Word documents, presentations, etc.
 
-
 Benefits:
 
 -   Reproducible research
 -   Automated reporting
-
 :::
 
-##  Quarto Document Structure
+## Quarto Document Structure
 
-````markdown
+```` markdown
   ---
   title: "Descriptive Statistics Report"
   author: "Your Name"
@@ -130,11 +127,11 @@ Benefits:
   # Results
   
   ```{{r}}
-  library(purrr)
-  numeric_vars <- c("creatinine", "lead", "barium", "cadmium")
-  descriptive_stats <- map(numeric_vars, ~ compute_numeric_summaries(nh2007[[.x]]))
-  descriptive_stats
-  ```
+library(purrr)
+numeric_vars <- c("creatinine", "lead", "barium", "cadmium")
+descriptive_stats <- map(numeric_vars, ~ compute_numeric_summaries(nh2007[[.x]]))
+descriptive_stats
+```
   
 ````
 
@@ -146,22 +143,22 @@ Benefits:
 
 ## Markdown {.smaller}
 
-Text formatting: 
+Text formatting:
 
-- `**bold**`, 
-- `_italic_`, 
-- `# Headers 1`, 
-- `## Headers 2`
+-   `**bold**`,
+-   `_italic_`,
+-   `# Headers 1`,
+-   `## Headers 2`
 
 Lists:
 
-- Unordered lists with `-` or `*`
+-   Unordered lists with `-` or `*`
 
-- Ordered lists with `1.`
+-   Ordered lists with `1.`
 
-R Code chunks: 
-  
-````markdown
+R Code chunks:
+
+```` markdown
 ```{{r}}
 summary(cars)
 ```
@@ -173,17 +170,16 @@ Create publication ready tables in R directly from your data.
 
 There is many functions to style and format tables to match your needs:
 
-- Automatic number formating
-- Nice labels with special characters
-- Table header spanner
-- Cells highlight
+-   Automatic number formating
+-   Nice labels with special characters
+-   Table header spanner
+-   Cells highlight
 
-Tables can be exported in many format including html or MS Word. 
+Tables can be exported in many format including html or MS Word.
 
 ## Table creation with `gt`
 
 ![](/img/gt_parts_of_a_table.svg)
-
 
 ## Bonus: Git branching
 
@@ -196,8 +192,7 @@ Basic Git Workflow:
 
 ::: notes
 -   Isolates development work
--   Allows multiple features/bug fixes to be developed
-    concurrently
+-   Allows multiple features/bug fixes to be developed concurrently
 -   Simplifies collaboration and code review
 :::
 

@@ -9,11 +9,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.324">
+  <meta name="generator" content="quarto-1.5.45">
 
   <meta name="author" content="Stéphane Tuffier">
   <meta name="dcterms.date" content="2024-06-05">
-  <title>ISEE young 2024 - WS8 - Reproducitiliby - Hands-on Activity 1 - Theory</title>
+  <title>ISEE young 2024 - WS8 - Reproducibility – Hands-on Activity 1 - Theory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,7 +33,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -44,7 +44,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -72,7 +72,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -86,7 +86,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -97,7 +97,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -225,7 +225,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -391,6 +392,8 @@
   <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
   <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
   <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<meta property="og:title" content="ISEE young 2024 - WS8 - Reproducibility - Hands-on Activity 1 - Theory">
+<meta property="og:site_name" content="ISEE young 2024 - WS8 - Reproducibility">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -409,8 +412,8 @@ Stéphane Tuffier
 
   <p class="date">2024-06-05</p>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="plan" class="slide level2">
+<h2>Plan</h2>
 <ol type="1">
 <li>Project orgnisation</li>
 <li>R style guide</li>
@@ -418,24 +421,23 @@ Stéphane Tuffier
 <li>Introduction to functions</li>
 </ol>
 </section>
-<section>
-<section id="projects" class="title-slide slide level1 center">
-<h1>Projects</h1>
+<section id="projects" class="slide level2">
+<h2>Projects</h2>
 <p>For this workshop : a folder on your computer</p>
-<p>There are many definitions of a project: it can be a single analysis for a paper or an entire cohort study with different papers.</p>
-<p>For this workshop: we’ll refer to a folder on your computer.</p>
+<p>There are many definitions of a project: it can be a single analysis for a paper or an entire cohort study with many papers.</p>
+<p>In this workshop: a project will refer to a folder on your computer.</p>
 </section>
 <section id="projects-1" class="slide level2">
 <h2>Projects</h2>
-<p>RStudio natively support project oriented wrokflow</p>
+<p>RStudio natively support project oriented wrokflow.</p>
 <p>Advantages:</p>
 <ul>
 <li>The working directory is set by RStudio to the project folder.</li>
 <li>It is easy to switch between projects from the drop-down menu.</li>
 </ul>
 
-<img data-src="..\img/rstudio-project.png" class="r-stretch quarto-figure-center"><aside class="notes">
-<p>https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects</p>
+<img data-src="..\img/rstudio-project.png" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
+<p><a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">Using RStudio projects</a></p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -448,9 +450,9 @@ Stéphane Tuffier
           display:block!important;
       }</style></aside>
 </section>
-<section id="project-organisation" class="slide level2">
+<section id="project-organisation" class="slide level2 center">
 <h2>Project organisation</h2>
-<p>Not a single organization fits everybody’s needs, but being consistent throughout different projects or research groups helps collaboration.</p>
+<p>Not a single organization fits everybody’s needs, but being consistent throughout different projects or within a research group helps collaborating.</p>
 </section>
 <section id="directories" class="slide level2 smaller">
 <h2>Directories</h2>
@@ -476,18 +478,6 @@ Stéphane Tuffier
 <p>https://rfortherestofus.com/2021/08/rstudio-project-structure</p>
 <p>https://www.stat.ubc.ca/~jenny/STAT545A/block19_codeFormattingOrganization.html</p>
 <p>https://joshua.wilsonblack.nz/post/organising-r-projects/</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>data-raw/</span>
-<span id="cb1-2"><a href="#cb1-2"></a>├── README.md</span>
-<span id="cb1-3"><a href="#cb1-3"></a>├── mmash</span>
-<span id="cb1-4"><a href="#cb1-4"></a>│   ├── user_1</span>
-<span id="cb1-5"><a href="#cb1-5"></a>│   ├── user_10</span>
-<span id="cb1-6"><a href="#cb1-6"></a>│   ├── user_11</span>
-<span id="cb1-7"><a href="#cb1-7"></a>│   ├── ...</span>
-<span id="cb1-8"><a href="#cb1-8"></a>│   ├── user_7</span>
-<span id="cb1-9"><a href="#cb1-9"></a>│   ├── user_8</span>
-<span id="cb1-10"><a href="#cb1-10"></a>│   └── user_9</span>
-<span id="cb1-11"><a href="#cb1-11"></a>├── mmash-data.zip</span>
-<span id="cb1-12"><a href="#cb1-12"></a>└── mmash.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -521,47 +511,56 @@ Stéphane Tuffier
 <section id="naming-files-1" class="slide level2">
 <h2>Naming files</h2>
 <p>Some examples</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>2024-04-01_air-pollution_PM25.csv </span>
-<span id="cb2-2"><a href="#cb2-2"></a>2024-04-01_air-pollution_NO2.csv </span>
-<span id="cb2-3"><a href="#cb2-3"></a>2021-04-01_air-pollution_PM25.csv </span>
-<span id="cb2-4"><a href="#cb2-4"></a>2021-04-01_air-pollution_NO2.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>2024-04-01_air-pollution_PM25.csv </span>
+<span id="cb1-2"><a></a>2024-04-01_air-pollution_NO2.csv </span>
+<span id="cb1-3"><a></a>2021-04-01_air-pollution_PM25.csv </span>
+<span id="cb1-4"><a></a>2021-04-01_air-pollution_NO2.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This faciliate this kind of operations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">file.create</span>(<span class="st">"2024-04-01_air-pollution_PM25.csv"</span>)</span>
+<span id="cb2-2"><a></a><span class="fu">file.create</span>(<span class="st">"2024-04-01_air-pollution_NO2.csv"</span>)</span>
+<span id="cb2-3"><a></a><span class="fu">file.create</span>(<span class="st">"2021-04-01_air-pollution_PM25.csv"</span>)</span>
+<span id="cb2-4"><a></a><span class="fu">file.create</span>(<span class="st">"2021-04-01_air-pollution_NO2.csv"</span>)</span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a><span class="co"># List files with both 2024 and PM in their name</span></span>
+<span id="cb2-7"><a></a><span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">"2024*PM"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="naming-files-2" class="slide level2">
 <h2>Naming files</h2>
 <p>More examples</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a># Bad</span>
-<span id="cb3-2"><a href="#cb3-2"></a>alternative model.R</span>
-<span id="cb3-3"><a href="#cb3-3"></a>code for exploratory analysis.r</span>
-<span id="cb3-4"><a href="#cb3-4"></a>finalreport.qmd</span>
-<span id="cb3-5"><a href="#cb3-5"></a>FinalReport.qmd</span>
-<span id="cb3-6"><a href="#cb3-6"></a>Filenames Use Spaces and Punctuation.xlsx</span>
-<span id="cb3-7"><a href="#cb3-7"></a>fig 1.png</span>
-<span id="cb3-8"><a href="#cb3-8"></a>Figure_02.png</span>
-<span id="cb3-9"><a href="#cb3-9"></a>figure 1.png</span>
-<span id="cb3-10"><a href="#cb3-10"></a>fig 2.png</span>
-<span id="cb3-11"><a href="#cb3-11"></a>JW7d^(2sl@deletethisandyourcareerisoverWx2*.txt</span>
-<span id="cb3-12"><a href="#cb3-12"></a>model_first_try.R</span>
-<span id="cb3-13"><a href="#cb3-13"></a>myabstract.docx</span>
-<span id="cb3-14"><a href="#cb3-14"></a>run-first.r</span>
-<span id="cb3-15"><a href="#cb3-15"></a>temp.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a># Bad</span>
+<span id="cb3-2"><a></a>alternative model.R</span>
+<span id="cb3-3"><a></a>code for exploratory analysis.r</span>
+<span id="cb3-4"><a></a>finalreport.qmd</span>
+<span id="cb3-5"><a></a>FinalReport.qmd</span>
+<span id="cb3-6"><a></a>Filenames Use Spaces and Punctuation.xlsx</span>
+<span id="cb3-7"><a></a>fig 1.png</span>
+<span id="cb3-8"><a></a>Figure_02.png</span>
+<span id="cb3-9"><a></a>figure 1.png</span>
+<span id="cb3-10"><a></a>fig 2.png</span>
+<span id="cb3-11"><a></a>JW7d^(2sl@deletethisandyourcareerisoverWx2*.txt</span>
+<span id="cb3-12"><a></a>model_first_try.R</span>
+<span id="cb3-13"><a></a>myabstract.docx</span>
+<span id="cb3-14"><a></a>run-first.r</span>
+<span id="cb3-15"><a></a>temp.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a># Good</span>
-<span id="cb4-2"><a href="#cb4-2"></a>other/2014-06-08_abstract-for-sla.docx</span>
-<span id="cb4-3"><a href="#cb4-3"></a>other/filenames-are-getting-better.xlsx</span>
-<span id="cb4-4"><a href="#cb4-4"></a>01-load-data.R</span>
-<span id="cb4-5"><a href="#cb4-5"></a>02-exploratory-analysis.R</span>
-<span id="cb4-6"><a href="#cb4-6"></a>03-model-approach-1.R</span>
-<span id="cb4-7"><a href="#cb4-7"></a>04-model-approach-2.R</span>
-<span id="cb4-8"><a href="#cb4-8"></a>fig-01.png</span>
-<span id="cb4-9"><a href="#cb4-9"></a>fig-02.png</span>
-<span id="cb4-10"><a href="#cb4-10"></a>fig01_scatterplot-talk-length-vs-interest.png</span>
-<span id="cb4-11"><a href="#cb4-11"></a>fig02_histogram-talk-attendance.png</span>
-<span id="cb4-12"><a href="#cb4-12"></a>report-2022-03-20.qmd</span>
-<span id="cb4-13"><a href="#cb4-13"></a>report-2022-04-02.qmd</span>
-<span id="cb4-14"><a href="#cb4-14"></a>report-draft-notes.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a># Good</span>
+<span id="cb4-2"><a></a>other/2014-06-08_abstract-for-sla.docx</span>
+<span id="cb4-3"><a></a>other/filenames-are-getting-better.xlsx</span>
+<span id="cb4-4"><a></a>01-load-data.R</span>
+<span id="cb4-5"><a></a>02-exploratory-analysis.R</span>
+<span id="cb4-6"><a></a>03-model-approach-1.R</span>
+<span id="cb4-7"><a></a>04-model-approach-2.R</span>
+<span id="cb4-8"><a></a>fig-01.png</span>
+<span id="cb4-9"><a></a>fig-02.png</span>
+<span id="cb4-10"><a></a>fig01_scatterplot-talk-length-vs-interest.png</span>
+<span id="cb4-11"><a></a>fig02_histogram-talk-attendance.png</span>
+<span id="cb4-12"><a></a>report-2022-03-20.qmd</span>
+<span id="cb4-13"><a></a>report-2022-04-02.qmd</span>
+<span id="cb4-14"><a></a>report-draft-notes.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <aside class="notes">
@@ -604,7 +603,7 @@ Stéphane Tuffier
 </div>
 </div>
 </section>
-<section id="syntax" class="slide level2">
+<section id="syntax" class="slide level2 smaller">
 <h2>Syntax</h2>
 <ul>
 <li>Variable and function names:
@@ -623,17 +622,17 @@ Stéphane Tuffier
 </section>
 <section id="syntax-1" class="slide level2">
 <h2>Syntax</h2>
-<p>Quickly fix the syntax of your code using <code>styler</code>:</p>
+<p>Quickly fix the syntax of your code using <code>styler</code> package:</p>
 
-<img data-src="..\img/rstudio-styler.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="..\img/rstudio-styler.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="naming-things" class="slide level2">
 <h2>Naming things</h2>
 <ul>
 <li>Avoid changing common R functions or objects.</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>T <span class="ot">&lt;-</span> <span class="st">"true"</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>c <span class="ot">&lt;-</span> <span class="st">"true"</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb5-2"><a></a>c <span class="ot">&lt;-</span> <span class="st">"true"</span></span>
+<span id="cb5-3"><a></a>sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Use verbs for functions: <code>do_something()</code>.</li>
 <li>New line after a pipe (<code>%&gt;%</code> or <code>|&gt;</code>).</li>
@@ -642,15 +641,40 @@ Stéphane Tuffier
 </section>
 <section id="naming-things-1" class="slide level2">
 <h2>Naming things</h2>
+<p>Bad:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>iris[, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb6-2"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Petal.Width, <span class="at">data =</span> iris)</span>
+<span id="cb6-3"><a></a>mod[[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Better:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>mod<span class="sc">$</span>coefficients[<span class="fu">names</span>(mod<span class="sc">$</span>coefficients) <span class="sc">==</span> <span class="st">"Petal.Width"</span>]</span>
+<span id="cb7-2"><a></a>iris[, <span class="fu">c</span>(<span class="st">"Sepal.Width"</span>, <span class="st">"Petal.Width"</span>)]</span>
+<span id="cb7-3"><a></a>iris[, <span class="fu">grep</span>(<span class="st">"Width"</span>, <span class="fu">colnames</span>(iris))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="naming-things-2" class="slide level2">
 <h2>Naming things</h2>
 <p>Comment as you code, provide as much detail as you can. Your future self will thank you.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Even better</span></span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a><span class="co"># Inspect iris data</span></span>
+<span id="cb8-4"><a></a>iris[, <span class="fu">grep</span>(<span class="st">"Width"</span>, <span class="fu">colnames</span>(iris))]</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a><span class="co"># Linear regression between sepal and petal width</span></span>
+<span id="cb8-7"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Petal.Width, <span class="at">data =</span> iris)</span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a><span class="co"># Beta from the regression for petal width</span></span>
+<span id="cb8-10"><a></a><span class="co">#   Low correlation</span></span>
+<span id="cb8-11"><a></a>mod<span class="sc">$</span>coefficients[<span class="fu">names</span>(mod<span class="sc">$</span>coefficient) <span class="sc">==</span> <span class="st">"Petal.Width"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="classic-version-control" class="slide level2">
 <h2>Classic version control</h2>
 
-<img data-src="..\img/version-control.jpg" class="r-stretch quarto-figure-center"><aside class="notes">
+<img data-src="..\img/version-control.jpg" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
 <p>Manual version control system, Luke W. Johnston</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -667,7 +691,7 @@ Stéphane Tuffier
 <section id="classic-version-control-1" class="slide level2">
 <h2>Classic version control</h2>
 
-<img data-src="..\img/version-nightmare.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="..\img/version-nightmare.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="git" class="slide level2">
 <h2>Git</h2>
 <ul>
@@ -676,13 +700,13 @@ Stéphane Tuffier
 <li>Allows you to split your work into different branches for testing purposes.</li>
 <li>Handles merging files by comparing their modifications and resolving differences if any.</li>
 </ul>
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
 <p>With Git, you only need one version of your files!</p>
@@ -700,46 +724,12 @@ Stéphane Tuffier
 </ul>
 <p>Configure a git repository for each project.</p>
 </section>
-<section id="terms-to-know" class="slide level2">
+<section id="terms-to-know" class="slide level2 smaller">
 <h2>Terms to know</h2>
-<div class="cell" data-reveal="true" data-eval="true">
-<div class="cell-output-display">
-<div id="fig-git-states" class="quarto-figure quarto-figure-center">
-<figure>
-<div>
-<pre class="mermaid mermaid-js" data-label="fig-git-states">%%{init:{'themeCSS': ".actor {stroke: DarkBlue;fill: White;stroke-width:1.5px;}", 'sequence':{'mirrorActors': false}}}%%
-
-sequenceDiagram
-
-    participant W as Working folder
-
-    participant S as Staged
-
-    participant H as History
-
-    W-&gt;&gt;S: Add
-
-    S-&gt;&gt;H: Commit
-
-</pre>
-</div>
-<p></p><figcaption>Figure&nbsp;1: The three states that files and folders can be in, when using Git.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li><code>repository</code>, <code>repo</code>: a folder tracked by git.</li>
-<li><code>working folder</code>: files not tracked by Git, or contain new modification not saved yet.</li>
-<li><code>add</code>: add files of modifications to be tracked by Git</li>
-<li><code>commit</code>: create a snapshot of changes and save it in Git <code>history</code>. Commits can have a short description of the changes</li>
-</ul>
-</section>
-<section id="terms-to-know-1" class="slide level2">
-<h2>Terms to know</h2>
-<div class="cell" data-reveal="true" data-eval="true">
+<div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">%%{init:{'themeCSS': ".actor {stroke: DarkBlue;fill: White;stroke-width:1.5px;}", 'sequence':{'mirrorActors': false}}}%%
 
@@ -757,7 +747,41 @@ sequenceDiagram
 
 </pre>
 </div>
-<p>The three states that files and folders can be in, when using Git.</p>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><code>repository</code>, <code>repo</code>: a folder tracked by git.</li>
+<li><code>working folder</code>: files not tracked by Git, or contain new modification not saved yet.</li>
+<li><code>add</code>: add files of modifications to be tracked by Git</li>
+<li><code>commit</code>: create a snapshot of changes and save it in Git <code>history</code>. Commits must have a short description.</li>
+</ul>
+</section>
+<section id="terms-to-know-1" class="slide level2 smaller">
+<h2>Terms to know</h2>
+<div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init:{'themeCSS': ".actor {stroke: DarkBlue;fill: White;stroke-width:1.5px;}", 'sequence':{'mirrorActors': false}}}%%
+
+sequenceDiagram
+
+    participant W as Working folder
+
+    participant S as Staged
+
+    participant H as History
+
+    W-&gt;&gt;S: Add
+
+    S-&gt;&gt;H: Commit
+
+</pre>
+</div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -768,6 +792,7 @@ sequenceDiagram
 </section>
 <section id="terms-to-know-2" class="slide level2 smaller">
 <h2>Terms to know</h2>
+<p>Branches and repository:</p>
 <ul>
 <li><code>local</code>: refer to the repository that you store on your computer.</li>
 <li><code>remote</code>: refer to the repository that are stored online like git hub.</li>
@@ -780,9 +805,6 @@ sequenceDiagram
 <div class="callout-question">
 <p>Why write functions?</p>
 </div>
-<blockquote>
-<p>Avoid repeatition</p>
-</blockquote>
 <p>Golden rule of programming: <strong>DRY - Don’t Repeat Yourself</strong></p>
 <p>Create function for actions that are often repeated:</p>
 <ul>
@@ -792,7 +814,7 @@ sequenceDiagram
 <li>Create tables</li>
 </ul>
 </section>
-<section id="functions-1" class="slide level2">
+<section id="functions-1" class="slide level2 smaller">
 <h2>Functions</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -809,9 +831,9 @@ sequenceDiagram
 </div>
 <p>For example, <code>+</code> (add) is a function, <code>mean()</code> is a function …</p>
 <p>Functions are made of a function call, its arguments, and the function body:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>myfunction <span class="ot">&lt;-</span> <span class="cf">function</span>(argument1, argument2){ </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="co"># body of function with R code</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>myfunction <span class="ot">&lt;-</span> <span class="cf">function</span>(argument1, argument2){ </span>
+<span id="cb9-2"><a></a>  <span class="co"># body of function with R code</span></span>
+<span id="cb9-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -828,14 +850,18 @@ sequenceDiagram
 </section>
 <section id="functions-2" class="slide level2">
 <h2>Functions</h2>
-<p>The output of the function depends only on its inputs. Same inputs will give the same result.</p>
-<p>Functions can replace loops and make your code much clearer.</p>
-<p>Functions are easier to share between projects and can be gathered in a package.</p>
+<ul>
+<li><p>The output of the function depends only on the inputs. Identical inputs will give identical results.</p></li>
+<li><p>Functions can replace loops and make your code much clearer.</p></li>
+<li><p>Functions are easier to share between projects and can be gathered in a package.</p></li>
+</ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</div>
+</section>
     </div>
   </div>
 
@@ -863,7 +889,6 @@ sequenceDiagram
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1050,42 +1075,80 @@ sequenceDiagram
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1119,18 +1182,7 @@ sequenceDiagram
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1162,11 +1214,50 @@ sequenceDiagram
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/isee-young-ws-reproducibility\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1176,8 +1267,17 @@ sequenceDiagram
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1191,7 +1291,11 @@ sequenceDiagram
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

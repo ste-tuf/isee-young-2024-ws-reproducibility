@@ -1,16 +1,69 @@
+# Script after Exercice 1
+
+# To put in file R/descriptive --------------------------------------------
+
+#' Compute summary statistics for a vector
+#'
+#' @param variable a vector
+#
+compute_descriptive_stats <- function(variable) {
+  
+  statistics <- NA
+  
+  # Steps for
+  if (is.numeric(variable)) {
+    statistics <- compute_numeric(variable)
+  }
+  
+  if (is.factor(variable) || is.logical(variable)) {
+    statistics <- compute_table(variable)
+  }
+  
+  statistics
+}
+
+compute_table <- function(variable) {
+  # Return frequency table as a dataframe
+  table(variable, useNA = "always")
+}
+
+compute_numeric <- function(variable) {
+  mean_value <- mean(variable, na.rm = TRUE)
+  sd_value <- sd(variable, na.rm = TRUE)
+  quantiles <- quantile(variable, na.rm = TRUE)
+  
+  # Return statistics
+  list(
+    "mean" = mean_value,
+    "sd" = sd_value,
+    "quantiles" = quantiles
+  )
+}
+
+
+compute_descriptive_graph <- function(variable) {
+  # Steps for
+  if (is.numeric(variable)) {
+    p <- ggplot2::ggplot(mapping = aes(x=variable)) + 
+      ggplot2::geom_histogram()
+  }
+  
+  if (is.factor(variable) || is.logical(variable)) {
+    p <- ggplot2::ggplot(mapping = aes(x=variable)) + 
+      ggplot2::geom_bar()
+  }
+  
+  p
+}
+
+# In starting_script.R ----------------------------------------------------
+
+
 library(tidyverse)
 
-setwd("C:/folder/isee-analysis/")
-load("C:/folder/isee-analysis/nh2007.Rdata")
+nh2007 <- load("data/nh2007.Rdata")
 
-
-# Demographic variables: id, gender, age_screening, education, education_child, marital_status
-# Biochemical markers: creatinine
-# Exposure variables: lead, barium, cadmium
-# Health outcomes: asthma, heart_failure, coronary_heart_disease, heart_attack, stroke, chronic_bronchitis, cancer
-
-# Summary statistics
-
+# Data management ---------------------------------------------------------
 nh2007$id<-factor(nh2007$id)
 nh2007$gender<-factor(nh2007$gender)
 
@@ -36,51 +89,41 @@ nh2007$chronic_bronchitis<-nh2007$chronic_bronchitis%in%1
 nh2007$cancer<-nh2007$cancer%in%1
 
 summary(nh2007)
-
 head(nh2007)
 
-table(nh2007$gender,useNA="always")
-table(nh2007$education,useNA="always")
-table(nh2007$education_child,useNA="always")
-table(nh2007$asthma,useNA="always")
-table(nh2007$heart_failure,useNA="always")
-table(nh2007$coronary_heart_disease ,useNA="always")
 
-barplot(table(nh2007$gender,useNA="always"))
-barplot(table(nh2007$education,useNA="always"))
-barplot(table(nh2007$education_child,useNA="always"))
-barplot(table(nh2007$asthma,useNA="always"))
-barplot(table(nh2007$heart_failure,useNA="always"))
-barplot(table(nh2007$coronary_heart_disease ,useNA="always"))
+# Summary statistics ------------------------------------------------------
 
-mean(nh2007$creatinine)
-mean(nh2007$lead)
-mean(nh2007$barium)
-mean(nh2007$cadmium)
-
-sd(nh2007$creatinine)
-sd(nh2007$lead)
-sd(nh2007$barium)
-sd(nh2007$cadmium)
-
-quantile(nh2007$creatinine)
-quantile(nh2007$lead)
-quantile(nh2007$barium)
-quantile(nh2007$cadmium)
+# Numbers
+compute_descriptive_stats(nh2007$gender)
+compute_descriptive_stats(nh2007$education)
+compute_descriptive_stats(nh2007$education_child)
+compute_descriptive_stats(nh2007$asthma)
+compute_descriptive_stats(nh2007$heart_failure)
+compute_descriptive_stats(nh2007$coronary_heart_disease)
+compute_descriptive_stats(nh2007$creatinine)
+compute_descriptive_stats(nh2007$lead)
+compute_descriptive_stats(nh2007$barium)
+compute_descriptive_stats(nh2007$cadmium)
 
 
-hist(nh2007$creatinine)
-hist(nh2007$lead)
-hist(nh2007$barium)
-hist(nh2007$cadmium)
+# Graph
+compute_descriptive_graph(nh2007$creatinine)
+compute_descriptive_graph(nh2007$lead)
+compute_descriptive_graph(nh2007$barium)
+compute_descriptive_graph(nh2007$cadmium)
 
-# Models 
+
+# Models ------------------------------------------------------------------
 # Creatinine
 model.1a <- glm(asthma ~ barium + age_screening + gender,data=nh2007)
 model.1.b <- glm(heart_failure~barium+age_screening+gender,data=nh2007)
 model.1.c <- glm(coronary_heart_disease~ barium +age_screening +gender,data=nh2007)
 model.1.d <- glm(heart_attack~barium + age_screening + gender,data=nh2007)
 model.1.e <- glm(asthma~barium + age_screening + gender,data=nh2007)
+
+# Models ------------------------------------------------------------------
+
 
 # Lead
 lead2a <- glm(asthma ~ lead + age_screening + gender,data=nh2007)
@@ -190,5 +233,7 @@ summary(Model_4_a)
 # AIC: 1411.3
 # 
 # Number of Fisher Scoring iterations: 2
+
+
 
 
